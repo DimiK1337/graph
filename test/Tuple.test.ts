@@ -95,5 +95,34 @@ describe("Given Tuple imported", () => {
         expect(extendedNode[5]).toBeDefined();
       });
     });
+    it("then Tuple has a move method", () => {
+      expect(Tuple.move).toBeDefined();
+    });
+    describe("when Tuple.move(node, coordinates) is called", () => {
+      let node;
+      let coordinates;
+      beforeEach(() => {
+        node = Tuple.create({
+          name: "Node",
+          type: Utilities.getRandomElement<NodeType>(NodeTypes),
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        coordinates = { x: 1, y: 1 };
+      });
+      it("then a node is return", () => {
+        let movedNode = Tuple.move(node, coordinates);
+        expect(movedNode).toBeDefined();
+      });
+      it("then node has coordinates", () => {
+        let movedNode = Tuple.move(node, coordinates);
+        expect(movedNode[3]).toBeDefined();
+      });
+      it("then node coordinates are updated", () => {
+        let movedNode = Tuple.move(node, coordinates);
+        let tupleCoordinates = [coordinates.x, coordinates.y];
+        expect(movedNode[3]).toEqual(tupleCoordinates);
+      });
+    });
   });
 });
