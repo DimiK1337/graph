@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "es2022",
+    "target": "es2022",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "inlineSources": true,
+    "baseUrl": "./",
+    "paths": {
+      "calculator": ["./src/Calculator.js"]
+    }
+  },
+  "include": ["./src/**/*", "./test/**/*"],
+  "typedocOptions": {
+    "excludePrivate": true,
+    "excludeProtected": true,
+    "disableSources": true,
+    "categorizeByGroup": false,
+    "sort": ["static-first", "visibility"],
+    "name": "ES6 Module",
+    "hideGenerator": true
+  }
+}
