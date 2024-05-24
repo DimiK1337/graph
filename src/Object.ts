@@ -17,4 +17,10 @@ export class Object {
       ...node,
       metadata: metadata,
     } as Node);
+
+  public static move = (node: Node, coordinates: Coordinates) =>
+    ({
+      ...node,
+      coordinates: coordinates,
+    } as Node);
 }
