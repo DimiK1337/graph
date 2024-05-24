@@ -1,11 +1,4 @@
-import {
-  UUID,
-  NodeType,
-  Icon,
-  Metadata,
-  GraphType,
-  GraphMeta,
-} from "./Generic.types.js";
+import { UUID, NodeType, Icon, Metadata, GraphMeta } from "./Generic.types.js";
 
 export type TupleCoordinates = [number, number];
 export type TupleNode = [
