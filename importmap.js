@@ -2,6 +2,8 @@ const importmap = {
   imports: {
     calculator: "./src/Calculator.js",
     utilities: "./src/utilities/Utilities.js",
+    types: "./src/Types.js",
+    object: "./src/Object.js",
   },
 };
 

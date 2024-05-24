@@ -1,7 +1,7 @@
 import { Utilities } from "utilities";
-import { Node, NodeTypes, NodeType } from "../src/Types.js";
+import { NodeTypes, NodeType } from "types";
 
-import { Object } from "../src/Object.js";
+import { Object } from "object";
 
 describe("Given Object imported", () => {
   it("then Object exist", () => {

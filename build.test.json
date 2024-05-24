@@ -8,7 +8,9 @@
     "baseUrl": "./",
     "paths": {
       "calculator": ["./src/Calculator.js"],
-      "utilities": ["./src/utilities/Utilities.js"]
+      "utilities": ["./src/utilities/Utilities.js"],
+      "types": ["./src/Types.js"],
+      "object": ["./src/Object.js"]
     }
   },
   "include": ["./src/**/*", "./test/**/*"],
