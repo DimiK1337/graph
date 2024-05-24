@@ -1,5 +1,5 @@
 import { Utilities } from "utilities";
-import { NodeTypes, NodeType, Metadata } from "../src/Generic.types.js";
+import { NodeTypes, NodeType, Metadata } from "types";
 
 import { Tuple } from "tuple";
 

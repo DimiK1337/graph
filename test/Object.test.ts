@@ -1,5 +1,5 @@
 import { Utilities } from "utilities";
-import { NodeTypes, NodeType } from "../src/Generic.types.js";
+import { NodeTypes, NodeType, Metadata } from "types";
 
 import { Object } from "object";
 
@@ -64,7 +64,7 @@ describe("Given Object imported", () => {
     });
     describe("when result = Object.extend(node, metadata)", () => {
       let node;
-      let metadata;
+      let metadata: Metadata;
       beforeEach(() => {
         node = Object.create({
           name: "Node",
