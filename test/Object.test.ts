@@ -1,5 +1,5 @@
 import { Utilities } from "utilities";
-import { NodeTypes, NodeType } from "types";
+import { NodeTypes, NodeType } from "../src/Generic.types.js";
 
 import { Object } from "object";
 

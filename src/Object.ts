@@ -1,6 +1,7 @@
 import { Utilities } from "./utilities/Utilities.js";
+import { Metadata } from "./Generic.types.js";
 
-import { Node, Metadata, Coordinates } from "./Types.js";
+import { ObjectNode, ObjectCoordinates } from "./Object.types.js";
 
 export class Object {
   public static create = ({ name, type, coordinates, icon }) =>
@@ -10,17 +11,17 @@ export class Object {
       type: type,
       coordinates: coordinates,
       icon: icon,
-    } as Node);
+    } as ObjectNode);
 
-  public static extend = (node: Node, metadata: Metadata) =>
+  public static extend = (node: ObjectNode, metadata: Metadata) =>
     ({
       ...node,
       metadata: metadata,
-    } as Node);
+    } as ObjectNode);
 
-  public static move = (node: Node, coordinates: Coordinates) =>
+  public static move = (node: ObjectNode, coordinates: ObjectCoordinates) =>
     ({
       ...node,
       coordinates: coordinates,
-    } as Node);
+    } as ObjectNode);
 }
