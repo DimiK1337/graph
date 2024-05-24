@@ -29,5 +29,15 @@ describe("Given Utilities imported", () => {
         expect(Utilities.isUUID(uuid)).toBe(true);
       });
     });
+    it("then Utilities has a getRandomElement method", () => {
+      expect(Utilities.getRandomElement).toBeDefined();
+    });
+    describe("when Utilities.getRandomElement() is called with an array", () => {
+      it("then it returns a random element from the array", () => {
+        const array = ["start", "workflow", "delay", "end", "decision"];
+        const randomElement = Utilities.getRandomElement(array);
+        expect(array).toContain(randomElement);
+      });
+    });
   });
 });
