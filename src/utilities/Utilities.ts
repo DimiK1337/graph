@@ -1,4 +1,4 @@
-import { UUID } from "../Types.js";
+import { UUID } from "../Generic.types.js";
 
 /**
  * Example: "c4076ede-bddf-47f3-8237-5712b4d3eda6"
