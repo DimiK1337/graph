@@ -11,4 +11,10 @@ export class Object {
       coordinates: coordinates,
       icon: icon,
     } as Node);
+
+  public static extend = (node: Node, metadata: Metadata) =>
+    ({
+      ...node,
+      metadata: metadata,
+    } as Node);
 }
