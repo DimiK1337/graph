@@ -17,4 +17,9 @@ export class Tuple {
     node[5] = metadata;
     return node;
   };
+
+  public static move = (node: TupleNode, coordinates) => {
+    node[3] = [coordinates.x, coordinates.y];
+    return node;
+  };
 }
