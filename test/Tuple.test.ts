@@ -1,5 +1,5 @@
 import { Utilities } from "utilities";
-import { NodeTypes, NodeType } from "../src/Generic.types.js";
+import { NodeTypes, NodeType, Metadata } from "../src/Generic.types.js";
 
 import { Tuple } from "tuple";
 
@@ -44,6 +44,55 @@ describe("Given Tuple imported", () => {
       it("then node[4] exist", () => {
         let node = Tuple.create(details);
         expect(node[4]).toBeDefined();
+      });
+    });
+    it("then Tuple has a extend method", () => {
+      expect(Tuple.extend).toBeDefined();
+    });
+    describe("when Tuple.extend(node, metadata) is called", () => {
+      let node;
+      let metadata: Metadata;
+      beforeEach(() => {
+        node = Tuple.create({
+          name: "Node",
+          type: Utilities.getRandomElement<NodeType>(NodeTypes),
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        metadata = {
+          arrival: {
+            distribution: "exponential",
+            parameters: [{ rate: 1 }],
+          },
+        };
+      });
+      it("then an extended node is return", () => {
+        let extendedNode = Tuple.extend(node, metadata);
+        expect(extendedNode).toBeDefined();
+      });
+      it("then extended node[0] exist", () => {
+        let extendedNode = Tuple.extend(node, metadata);
+        expect(extendedNode[0]).toBeDefined();
+      });
+      it("then extended node[1] exist", () => {
+        let extendedNode = Tuple.extend(node, metadata);
+        expect(extendedNode[1]).toBeDefined();
+      });
+      it("then extended node[2] exist", () => {
+        let extendedNode = Tuple.extend(node, metadata);
+        expect(extendedNode[2]).toBeDefined();
+      });
+      it("then extended node[3] exist", () => {
+        let extendedNode = Tuple.extend(node, metadata);
+        expect(extendedNode[3]).toBeDefined();
+      });
+      it("then extended node[4] exist", () => {
+        let extendedNode = Tuple.extend(node, metadata);
+        expect(extendedNode[4]).toBeDefined();
+      });
+      it("then extended node[5] exist", () => {
+        let extendedNode = Tuple.extend(node, metadata);
+        expect(extendedNode[5]).toBeDefined();
       });
     });
   });
