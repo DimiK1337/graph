@@ -8,10 +8,10 @@ describe("Given Tuple imported", () => {
     expect(Tuple).toBeDefined();
   });
   describe("Given Tuple exist", () => {
-    it("then Tuple has a create method", () => {
+    it("then Tuple.create exist", () => {
       expect(Tuple.create).toBeDefined();
     });
-    describe("when Tuple.create(node) is called", () => {
+    describe("when result = Tuple.create(node)", () => {
       let details;
       beforeEach(() => {
         details = {
@@ -21,35 +21,49 @@ describe("Given Tuple imported", () => {
           icon: "./icon.svg",
         };
       });
-      it("then a node is return", () => {
-        let node = Tuple.create(details);
-        expect(node).toBeDefined();
+      it("then result exist", () => {
+        let result = Tuple.create(details);
+        expect(result).toBeDefined();
       });
-      it("then node[0] exist", () => {
-        let node = Tuple.create(details);
-        expect(node[0]).toBeDefined();
-      });
-      it("then node[1] exist", () => {
-        let node = Tuple.create(details);
-        expect(node[1]).toBeDefined();
-      });
-      it("then node[2] exist", () => {
-        let node = Tuple.create(details);
-        expect(node[2]).toBeDefined();
-      });
-      it("then node[3] exist", () => {
-        let node = Tuple.create(details);
-        expect(node[3]).toBeDefined();
-      });
-      it("then node[4] exist", () => {
-        let node = Tuple.create(details);
-        expect(node[4]).toBeDefined();
+      describe("Given result exist", () => {
+        let result;
+        beforeEach(() => {
+          result = Tuple.create(details);
+        });
+        it("then result[0] exist", () => {
+          expect(result[0]).toBeDefined();
+        });
+        it("then result[1] exist", () => {
+          expect(result[1]).toBeDefined();
+        });
+        it("then result[1] equal details.name", () => {
+          expect(result[1]).toBe(details.name);
+        });
+        it("then result[2] exist", () => {
+          expect(result[2]).toBeDefined();
+        });
+        it("then result[2] equal details.type", () => {
+          expect(result[2]).toBe(details.type);
+        });
+        it("then result[3] exist", () => {
+          expect(result[3]).toBeDefined();
+        });
+        it("then result[3] equal details.coordinates", () => {
+          let tupleCoordinates = [details.coordinates.x, details.coordinates.y];
+          expect(result[3]).toEqual(tupleCoordinates);
+        });
+        it("then result[4] exist", () => {
+          expect(result[4]).toBeDefined();
+        });
+        it("then result[4] equal details.icon", () => {
+          expect(result[4]).toBe(details.icon);
+        });
       });
     });
-    it("then Tuple has a extend method", () => {
+    it("then Tuple.extend exist", () => {
       expect(Tuple.extend).toBeDefined();
     });
-    describe("when Tuple.extend(node, metadata) is called", () => {
+    describe("when result = Tuple.extend(node, metadata)", () => {
       let node;
       let metadata: Metadata;
       beforeEach(() => {
@@ -66,39 +80,60 @@ describe("Given Tuple imported", () => {
           },
         };
       });
-      it("then an extended node is return", () => {
-        let extendedNode = Tuple.extend(node, metadata);
-        expect(extendedNode).toBeDefined();
+      it("then result exist", () => {
+        let result = Tuple.extend(node, metadata);
+        expect(result).toBeDefined();
       });
-      it("then extended node[0] exist", () => {
-        let extendedNode = Tuple.extend(node, metadata);
-        expect(extendedNode[0]).toBeDefined();
-      });
-      it("then extended node[1] exist", () => {
-        let extendedNode = Tuple.extend(node, metadata);
-        expect(extendedNode[1]).toBeDefined();
-      });
-      it("then extended node[2] exist", () => {
-        let extendedNode = Tuple.extend(node, metadata);
-        expect(extendedNode[2]).toBeDefined();
-      });
-      it("then extended node[3] exist", () => {
-        let extendedNode = Tuple.extend(node, metadata);
-        expect(extendedNode[3]).toBeDefined();
-      });
-      it("then extended node[4] exist", () => {
-        let extendedNode = Tuple.extend(node, metadata);
-        expect(extendedNode[4]).toBeDefined();
-      });
-      it("then extended node[5] exist", () => {
-        let extendedNode = Tuple.extend(node, metadata);
-        expect(extendedNode[5]).toBeDefined();
+      describe("Given result exist", () => {
+        let result;
+        beforeEach(() => {
+          result = Tuple.extend(node, metadata);
+        });
+        it("then result[0] exist", () => {
+          expect(result[0]).toBeDefined();
+        });
+        it("then result[0] equals node[0]", () => {
+          expect(result[0]).toBe(node[0]);
+        });
+        it("then result[1] exist", () => {
+          expect(result[1]).toBeDefined();
+        });
+        it("then result[1] equal node[1]", () => {
+          expect(result[1]).toBe(node[1]);
+        });
+        it("then result[2] exist", () => {
+          expect(result[2]).toBeDefined();
+        });
+        it("then result[2] equal node[2]", () => {
+          expect(result[2]).toBe(node[2]);
+        });
+        it("then result[3] exist", () => {
+          expect(result[3]).toBeDefined();
+        });
+        it("then result[3] equal node[3]", () => {
+          expect(result[3]).toBe(node[3]);
+        });
+        it("then result[3] exist", () => {
+          expect(result[3]).toBeDefined();
+        });
+        it("then result[4] exist", () => {
+          expect(result[4]).toBeDefined();
+        });
+        it("then result[4] equal node[4]", () => {
+          expect(result[4]).toBe(node[4]);
+        });
+        it("then result[5] exist", () => {
+          expect(result[5]).toBeDefined();
+        });
+        it("then result[5] equal metadata", () => {
+          expect(result[5]).toBe(metadata);
+        });
       });
     });
-    it("then Tuple has a move method", () => {
+    it("then Tuple.move exist", () => {
       expect(Tuple.move).toBeDefined();
     });
-    describe("when Tuple.move(node, coordinates) is called", () => {
+    describe("when result = Tuple.move(node, coordinates)", () => {
       let node;
       let coordinates;
       beforeEach(() => {
@@ -110,18 +145,46 @@ describe("Given Tuple imported", () => {
         });
         coordinates = { x: 1, y: 1 };
       });
-      it("then a node is return", () => {
-        let movedNode = Tuple.move(node, coordinates);
-        expect(movedNode).toBeDefined();
+      it("then result exist", () => {
+        let result = Tuple.move(node, coordinates);
+        expect(result).toBeDefined();
       });
-      it("then node has coordinates", () => {
-        let movedNode = Tuple.move(node, coordinates);
-        expect(movedNode[3]).toBeDefined();
-      });
-      it("then node coordinates are updated", () => {
-        let movedNode = Tuple.move(node, coordinates);
-        let tupleCoordinates = [coordinates.x, coordinates.y];
-        expect(movedNode[3]).toEqual(tupleCoordinates);
+      describe("Given result exist", () => {
+        let result;
+        beforeEach(() => {
+          result = Tuple.move(node, coordinates);
+        });
+        it("then result[0] exist", () => {
+          expect(result[0]).toBeDefined();
+        });
+        it("then result[0] equal node[0]", () => {
+          expect(result[0]).toBe(node[0]);
+        });
+        it("then result[1] exist", () => {
+          expect(result[1]).toBeDefined();
+        });
+        it("then result[1] equal node[1]", () => {
+          expect(result[1]).toBe(node[1]);
+        });
+        it("then result[2] exist", () => {
+          expect(result[2]).toBeDefined();
+        });
+        it("then result[2] equal node[2]", () => {
+          expect(result[2]).toBe(node[2]);
+        });
+        it("then result[3] exist", () => {
+          expect(result[3]).toBeDefined();
+        });
+        it("then result[3] equal coordinates", () => {
+          let tupleCoordinates = [coordinates.x, coordinates.y];
+          expect(result[3]).toEqual(tupleCoordinates);
+        });
+        it("then result[4] exist", () => {
+          expect(result[4]).toBeDefined();
+        });
+        it("then result[4] equal node[4]", () => {
+          expect(result[4]).toBe(node[4]);
+        });
       });
     });
   });

@@ -8,10 +8,10 @@ describe("Given Object imported", () => {
     expect(Object).toBeDefined();
   });
   describe("Given Object exist", () => {
-    it("then Object has a create method", () => {
+    it("then Object.create exist", () => {
       expect(Object.create).toBeDefined();
     });
-    describe("when Object.create(node) is called", () => {
+    describe("when result = Object.create(node)", () => {
       let details;
       beforeEach(() => {
         details = {
@@ -21,35 +21,48 @@ describe("Given Object imported", () => {
           icon: "./icon.svg",
         };
       });
-      it("then a node is return", () => {
-        let node = Object.create(details);
-        expect(node).toBeDefined();
+      it("then result exist", () => {
+        let result = Object.create(details);
+        expect(result).toBeDefined();
       });
-      it("then node has an id", () => {
-        let node = Object.create(details);
-        expect(node.id).toBeDefined();
-      });
-      it("then node has a name", () => {
-        let node = Object.create(details);
-        expect(node.name).toBe("Node");
-      });
-      it("then node has a type", () => {
-        let node = Object.create(details);
-        expect(node.type).toBe(details.type);
-      });
-      it("then node has coordinates", () => {
-        let node = Object.create(details);
-        expect(node.coordinates).toBe(details.coordinates);
-      });
-      it("then node has an icon", () => {
-        let node = Object.create(details);
-        expect(node.icon).toBe(details.icon);
+      describe("Given result exist", () => {
+        let result;
+        beforeEach(() => {
+          result = Object.create(details);
+        });
+        it("then result.id exist", () => {
+          expect(result.id).toBeDefined();
+        });
+        it("then result.name exist", () => {
+          expect(result.name).toBeDefined();
+        });
+        it("then result.name equals details.name", () => {
+          expect(result.name).toBe(details.name);
+        });
+        it("then result.type exist", () => {
+          expect(result.type).toBeDefined();
+        });
+        it("then result.type equals details.type", () => {
+          expect(result.type).toBe(details.type);
+        });
+        it("then result.coordinates exist", () => {
+          expect(result.coordinates).toBeDefined();
+        });
+        it("then result.coordinates equals details.coordinates", () => {
+          expect(result.coordinates).toBe(details.coordinates);
+        });
+        it("then result.icon exist", () => {
+          expect(result.icon).toBeDefined();
+        });
+        it("then result.icon equals details.icon", () => {
+          expect(result.icon).toBe(details.icon);
+        });
       });
     });
-    it("then Object has a extend method", () => {
+    it("then Object.extend exist", () => {
       expect(Object.extend).toBeDefined();
     });
-    describe("when Object.extend(node, metadata) is called", () => {
+    describe("when result = Object.extend(node, metadata)", () => {
       let node;
       let metadata;
       beforeEach(() => {
@@ -66,39 +79,57 @@ describe("Given Object imported", () => {
           },
         };
       });
-      it("then an extended node is return", () => {
-        let extendedNode = Object.extend(node, metadata);
-        expect(extendedNode).toBeDefined();
+      it("then result exist", () => {
+        let result = Object.extend(node, metadata);
+        expect(result).toBeDefined();
       });
-      it("then extended node has an id", () => {
-        let extendedNode = Object.extend(node, metadata);
-        expect(extendedNode.id).toBe(node.id);
-      });
-      it("then extended node has a name", () => {
-        let extendedNode = Object.extend(node, metadata);
-        expect(extendedNode.name).toBe(node.name);
-      });
-      it("then extended node has a type", () => {
-        let extendedNode = Object.extend(node, metadata);
-        expect(extendedNode.type).toBe(node.type);
-      });
-      it("then extended node has coordinates", () => {
-        let extendedNode = Object.extend(node, metadata);
-        expect(extendedNode.coordinates).toBe(node.coordinates);
-      });
-      it("then extended node has an icon", () => {
-        let extendedNode = Object.extend(node, metadata);
-        expect(extendedNode.icon).toBe(node.icon);
-      });
-      it("then extended node has metadata", () => {
-        let extendedNode = Object.extend(node, metadata);
-        expect(extendedNode.metadata).toBe(metadata);
+      describe("Given result exist", () => {
+        let result;
+        beforeEach(() => {
+          result = Object.extend(node, metadata);
+        });
+        it("then result.id exist", () => {
+          expect(result.id).toBeDefined();
+        });
+        it("then result.id equals node.id", () => {
+          expect(result.id).toBe(node.id);
+        });
+        it("then result.name exist", () => {
+          expect(result.name).toBeDefined();
+        });
+        it("then result.name equals node.name", () => {
+          expect(result.name).toBe(node.name);
+        });
+        it("then result.type exist", () => {
+          expect(result.type).toBeDefined();
+        });
+        it("then result.type equals node.type", () => {
+          expect(result.type).toBe(node.type);
+        });
+        it("then result.coordinates exist", () => {
+          expect(result.coordinates).toBeDefined();
+        });
+        it("then result.coordinates equals node.coordinates", () => {
+          expect(result.coordinates).toBe(node.coordinates);
+        });
+        it("then result.icon exist", () => {
+          expect(result.icon).toBeDefined();
+        });
+        it("then result.icon equals node.icon", () => {
+          expect(result.icon).toBe(node.icon);
+        });
+        it("then result.metadata exist", () => {
+          expect(result.metadata).toBeDefined();
+        });
+        it("then result.metadata equals metadata", () => {
+          expect(result.metadata).toBe(metadata);
+        });
       });
     });
-    it("then Object has a move method", () => {
+    it("then Object.move exist", () => {
       expect(Object.move).toBeDefined();
     });
-    describe("when Object.move(node, coordinates) is called", () => {
+    describe("when result = Object.move(node, coordinates)", () => {
       let node;
       let coordinates;
       beforeEach(() => {
@@ -110,17 +141,42 @@ describe("Given Object imported", () => {
         });
         coordinates = { x: 1, y: 1 };
       });
-      it("then a node is return", () => {
-        let movedNode = Object.move(node, coordinates);
-        expect(movedNode).toBeDefined();
+      it("then result exist", () => {
+        let result = Object.move(node, coordinates);
+        expect(result).toBeDefined();
       });
-      it("then node has coordinates", () => {
-        let movedNode = Object.move(node, coordinates);
-        expect(movedNode.coordinates).toBe(coordinates);
-      });
-      it("then node coordinates are updated", () => {
-        let movedNode = Object.move(node, coordinates);
-        expect(movedNode.coordinates).toBe(coordinates);
+      describe("Given result exist", () => {
+        let result;
+        beforeEach(() => {
+          result = Object.move(node, coordinates);
+        });
+        it("then result.id exist", () => {
+          expect(result.id).toBeDefined();
+        });
+        it("then result.id equals node.id", () => {
+          expect(result.id).toBe(node.id);
+        });
+        it("then result.name exist", () => {
+          expect(result.name).toBeDefined();
+        });
+        it("then result.name equals node.name", () => {
+          expect(result.name).toBe(node.name);
+        });
+        it("then result.type exist", () => {
+          expect(result.type).toBeDefined();
+        });
+        it("then result.type equals node.type", () => {
+          expect(result.type).toBe(node.type);
+        });
+        it("then result.coordinates exist", () => {
+          expect(result.coordinates).toBeDefined();
+        });
+        it("then result.coordinates equals coordinates", () => {
+          expect(result.coordinates).toBe(coordinates);
+        });
+        it("then result.coordinates is not equal to node.coordinates", () => {
+          expect(result.coordinates).not.toBe(node.coordinates);
+        });
       });
     });
   });
