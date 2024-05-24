@@ -95,5 +95,33 @@ describe("Given Object imported", () => {
         expect(extendedNode.metadata).toBe(metadata);
       });
     });
+    it("then Object has a move method", () => {
+      expect(Object.move).toBeDefined();
+    });
+    describe("when Object.move(node, coordinates) is called", () => {
+      let node;
+      let coordinates;
+      beforeEach(() => {
+        node = Object.create({
+          name: "Node",
+          type: Utilities.getRandomElement<NodeType>(NodeTypes),
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        coordinates = { x: 1, y: 1 };
+      });
+      it("then a node is return", () => {
+        let movedNode = Object.move(node, coordinates);
+        expect(movedNode).toBeDefined();
+      });
+      it("then node has coordinates", () => {
+        let movedNode = Object.move(node, coordinates);
+        expect(movedNode.coordinates).toBe(coordinates);
+      });
+      it("then node coordinates are updated", () => {
+        let movedNode = Object.move(node, coordinates);
+        expect(movedNode.coordinates).toBe(coordinates);
+      });
+    });
   });
 });
