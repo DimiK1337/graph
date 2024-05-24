@@ -1,9 +1,24 @@
-interface Coordinates {
+export type UUID = string;
+
+export const NodeTypes = [
+  "start",
+  "workflow",
+  "delay",
+  "end",
+  "decision",
+] as const;
+
+export type NodeType = (typeof NodeTypes)[number];
+
+export const GraphTypes = ["pathway"] as const;
+
+export type GraphType = (typeof GraphTypes)[number];
+export interface Coordinates {
   x: number;
   y: number;
 }
 
-interface Metadata {
+export interface Metadata {
   arrival?: {
     distribution: string;
     parameters: { rate: number }[];
@@ -15,33 +30,32 @@ interface Metadata {
   prevalence?: { target: string; probability: number }[];
 }
 
-interface Node {
-  id: string;
+export interface Node {
+  id: UUID;
   name: string;
-  type: string;
+  type: NodeType;
   coordinates: Coordinates;
+  icon?: string;
   metadata?: Metadata[];
 }
 
-interface Connection {
-  id: string;
+export interface Connection {
+  id: UUID;
   name: string;
-  source: string;
-  target: string;
+  source: UUID;
+  target: UUID;
   coordinates: {
     start: Coordinates;
     end: Coordinates;
   };
 }
 
-interface Pathway {
+export interface Pathway {
   graph: {
-    id: string;
+    id: UUID;
     name: string;
-    type: string;
+    type: GraphType;
   };
   nodes: Node[];
   connections: Connection[];
 }
-
-type UUID = string;
