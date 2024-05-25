@@ -98,6 +98,66 @@ describe("Given Graph imported", () => {
           );
           expect(results.length).toEqual(qty);
         });
+        it("then create 100 node takes", () => {
+          let qty = 100;
+          let results = Benchmark.Performance(
+            { structure: "Object", action: "createNodes", qty: qty },
+            graph.createNodes,
+            qty,
+            details
+          );
+          expect(results.length).toEqual(qty);
+        });
+        it("then create 100 node consumes", () => {
+          let qty = 100;
+          let results = Benchmark.Memory(
+            { structure: "Object", action: "createNodes", qty: qty },
+            graph.createNodes,
+            qty,
+            details
+          );
+          expect(results.length).toEqual(qty);
+        });
+        it("then create 1000 node takes", () => {
+          let qty = 1000;
+          let results = Benchmark.Performance(
+            { structure: "Object", action: "createNodes", qty: qty },
+            graph.createNodes,
+            qty,
+            details
+          );
+          expect(results.length).toEqual(qty);
+        });
+        it("then create 1000 node consumes", () => {
+          let qty = 1000;
+          let results = Benchmark.Memory(
+            { structure: "Object", action: "createNodes", qty: qty },
+            graph.createNodes,
+            qty,
+            details
+          );
+          expect(results.length).toEqual(qty);
+        });
+        it("then create 10000 node takes", () => {
+          let qty = 10000;
+          let results = Benchmark.Performance(
+            { structure: "Object", action: "createNodes", qty: qty },
+            graph.createNodes,
+            qty,
+            details
+          );
+          expect(results.length).toEqual(qty);
+        });
+        it("then create 10000 node consumes", () => {
+          let qty = 10000;
+          let results = Benchmark.Memory(
+            { structure: "Object", action: "createNodes", qty: qty },
+            graph.createNodes,
+            qty,
+            details
+          );
+          expect(results.length).toEqual(qty);
+        });
       });
     });
     describe("and nodes = []", () => {
@@ -280,6 +340,66 @@ describe("Given Graph imported", () => {
         });
         it("then create 10 node consumes", () => {
           let qty = 10;
+          let results = Benchmark.Memory(
+            { structure: "Tuple", action: "createNodes", qty: qty },
+            graph.createNodes,
+            qty,
+            details
+          );
+          expect(results.length).toEqual(qty);
+        });
+        it("then create 100 node takes", () => {
+          let qty = 100;
+          let results = Benchmark.Performance(
+            { structure: "Tuple", action: "createNodes", qty: qty },
+            graph.createNodes,
+            qty,
+            details
+          );
+          expect(results.length).toEqual(qty);
+        });
+        it("then create 100 node consumes", () => {
+          let qty = 100;
+          let results = Benchmark.Memory(
+            { structure: "Tuple", action: "createNodes", qty: qty },
+            graph.createNodes,
+            qty,
+            details
+          );
+          expect(results.length).toEqual(qty);
+        });
+        it("then create 1000 node takes", () => {
+          let qty = 1000;
+          let results = Benchmark.Performance(
+            { structure: "Tuple", action: "createNodes", qty: qty },
+            graph.createNodes,
+            qty,
+            details
+          );
+          expect(results.length).toEqual(qty);
+        });
+        it("then create 1000 node consumes", () => {
+          let qty = 1000;
+          let results = Benchmark.Memory(
+            { structure: "Tuple", action: "createNodes", qty: qty },
+            graph.createNodes,
+            qty,
+            details
+          );
+          expect(results.length).toEqual(qty);
+        });
+        it("then create 10000 node takes", () => {
+          let qty = 10000;
+          let results = Benchmark.Performance(
+            { structure: "Tuple", action: "createNodes", qty: qty },
+            graph.createNodes,
+            qty,
+            details
+          );
+          expect(results.length).toEqual(qty);
+        });
+        it("then create 10000 node consumes", () => {
+          let qty = 10000;
           let results = Benchmark.Memory(
             { structure: "Tuple", action: "createNodes", qty: qty },
             graph.createNodes,
