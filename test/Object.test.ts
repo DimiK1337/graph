@@ -8,6 +8,12 @@ describe("Given Object imported", () => {
     expect(Object).toBeDefined();
   });
   describe("Given Object exist", () => {
+    it("then Object.structure exist", () => {
+      expect(Object.structure).toBeDefined();
+    });
+    it("then Object.structure equals object", () => {
+      expect(Object.structure).toEqual("object");
+    });
     it("then Object.create exist", () => {
       expect(Object.create).toBeDefined();
     });
