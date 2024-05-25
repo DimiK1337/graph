@@ -14,6 +14,13 @@ export class Graph {
   constructor(nodeFactory: NodeFactory) {
     this.node = nodeFactory;
   }
+  createNodes = (qty: number, details) => {
+    const nodes = [];
+    for (let i = 0; i < qty; i++) {
+      nodes.push(this.node.create(details));
+    }
+    return nodes;
+  };
   addNode = (nodes: Node[], { name, type, coordinates, icon }) => {
     const node = this.node.create({ name, type, coordinates, icon });
     nodes.push(node);
