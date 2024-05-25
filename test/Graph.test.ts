@@ -138,6 +138,35 @@ describe("Given Graph imported", () => {
           expect(nodes[0].icon).toEqual(details.icon);
         });
       });
+      describe("when benchmarking graph.addNode function", () => {
+        let details;
+        beforeEach(() => {
+          details = {
+            name: "Node",
+            type: Utilities.getRandomElement<NodeType>(NodeTypes),
+            coordinates: { x: 0, y: 0 },
+            icon: "./icon.svg",
+          };
+        });
+        it("then adding 1 node to nodes takes", () => {
+          let results = Benchmark.Performance(
+            { structure: "Object", action: "addNode" },
+            graph.addNode,
+            [],
+            details
+          );
+          expect(results.length).toEqual(1);
+        });
+        it("then adding 1 node to nodes consumes", () => {
+          let results = Benchmark.Memory(
+            { structure: "Object", action: "addNode" },
+            graph.addNode,
+            [],
+            details
+          );
+          expect(results.length).toEqual(1);
+        });
+      });
     });
     it("then graph.findNodeById exist", () => {
       expect(graph.findNodeById).toBeDefined();
@@ -298,6 +327,35 @@ describe("Given Graph imported", () => {
         });
         it("then nodes[0][4] equals details.icon", () => {
           expect(nodes[0][4]).toEqual(details.icon);
+        });
+      });
+      describe("when benchmarking graph.addNode function", () => {
+        let details;
+        beforeEach(() => {
+          details = {
+            name: "Node",
+            type: Utilities.getRandomElement<NodeType>(NodeTypes),
+            coordinates: { x: 0, y: 0 },
+            icon: "./icon.svg",
+          };
+        });
+        it("then adding 1 node to nodes takes", () => {
+          let results = Benchmark.Performance(
+            { structure: "Tuple", action: "addNode" },
+            graph.addNode,
+            [],
+            details
+          );
+          expect(results.length).toEqual(1);
+        });
+        it("then adding 1 node to nodes consumes", () => {
+          let results = Benchmark.Memory(
+            { structure: "Tuple", action: "addNode" },
+            graph.addNode,
+            [],
+            details
+          );
+          expect(results.length).toEqual(1);
         });
       });
     });
