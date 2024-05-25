@@ -11,7 +11,8 @@
       "utilities": ["./src/utilities/Utilities.js"],
       "types": ["./src/Generic.types.js"],
       "object": ["./src/Object.js"],
-      "tuple": ["./src/Tuple.js"]
+      "tuple": ["./src/Tuple.js"],
+      "graph": ["./src/Graph.js"]
     }
   },
   "include": ["./src/**/*"]

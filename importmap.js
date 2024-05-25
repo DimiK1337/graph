@@ -4,6 +4,7 @@ const importmap = {
     types: "./src/Generic.types.js",
     object: "./src/Object.js",
     tuple: "./src/Tuple.js",
+    graph: "./src/Graph.js",
   },
 };
 

@@ -4,7 +4,7 @@ import { NodeTypes, NodeType } from "types";
 import { Object } from "object";
 import { Tuple } from "tuple";
 
-import { Graph } from "../src/Graph.js";
+import { Graph } from "graph";
 
 describe("Given Graph imported", () => {
   it("then Graph exist", () => {
