@@ -8,6 +8,12 @@ describe("Given Tuple imported", () => {
     expect(Tuple).toBeDefined();
   });
   describe("Given Tuple exist", () => {
+    it("then Tuple.structure exist", () => {
+      expect(Tuple.structure).toBeDefined();
+    });
+    it("then Tuple.structure equals tuple", () => {
+      expect(Tuple.structure).toEqual("tuple");
+    });
     it("then Tuple.create exist", () => {
       expect(Tuple.create).toBeDefined();
     });
