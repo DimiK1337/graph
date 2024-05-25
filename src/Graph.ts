@@ -14,6 +14,7 @@ export class Graph {
   constructor(nodeFactory: NodeFactory) {
     this.node = nodeFactory;
   }
+
   createNodes = (qty: number, details) => {
     const nodes = [];
     for (let i = 0; i < qty; i++) {
@@ -21,13 +22,20 @@ export class Graph {
     }
     return nodes;
   };
+
   addNode = (nodes: Node[], { name, type, coordinates, icon }) => {
     const node = this.node.create({ name, type, coordinates, icon });
     nodes.push(node);
     return nodes;
   };
+
   findNodeById = (nodes: Node[], id: string) =>
     this.node.structure === "object"
       ? nodes.find((node: ObjectNode) => node.id === id)
       : nodes.find((node: TupleNode) => node[0] === id);
+
+  removeNodeById = (nodes: Node[], id: string) =>
+    this.node.structure === "object"
+      ? nodes.filter((node: ObjectNode) => node.id !== id)
+      : nodes.filter((node: TupleNode) => node[0] !== id);
 }
