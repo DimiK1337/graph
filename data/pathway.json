@@ -10,6 +10,7 @@
       "name": "Start",
       "type": "start",
       "coordinates": { "x": 0, "y": 400 },
+      "icon": "icon.svg",
       "metadata": [
         {
           "arrival": {
@@ -24,6 +25,7 @@
       "name": "Triage",
       "type": "workflow",
       "coordinates": { "x": 100, "y": 400 },
+      "icon": "icon.svg",
       "metadata": [
         {
           "duration": {
@@ -39,6 +41,7 @@
       "type": "decision",
       "coordinates": { "x": 200, "y": 400 },
       "direction": "Diverging",
+      "icon": "icon.svg",
       "metadata": [
         {
           "prevalence": [
@@ -59,6 +62,7 @@
       "name": "12-lead ECG",
       "type": "workflow",
       "coordinates": { "x": 300, "y": 300 },
+      "icon": "icon.svg",
       "metadata": [
         {
           "duration": {
@@ -72,13 +76,15 @@
       "id": "50c4405f-8a0f-4dc7-8cea-5cf8d79d98b6",
       "name": "Other",
       "type": "end",
-      "coordinates": { "x": 300, "y": 500 }
+      "coordinates": { "x": 300, "y": 500 },
+      "icon": "icon.svg"
     },
     {
       "id": "f42ffd29-38ad-488b-b826-bbcadf9043c2",
       "name": "Clinical Assessment",
       "type": "workflow",
       "coordinates": { "x": 400, "y": 300 },
+      "icon": "icon.svg",
       "metadata": [
         {
           "duration": {
@@ -94,6 +100,7 @@
       "type": "decision",
       "coordinates": { "x": 500, "y": 300 },
       "direction": "Diverging",
+      "icon": "icon.svg",
       "metadata": [
         {
           "prevalence": [
@@ -113,13 +120,15 @@
       "id": "b1e8abfc-711b-4d18-b1b4-d5f14d5fd3b9",
       "name": "STEMI",
       "type": "end",
-      "coordinates": { "x": 600, "y": 200 }
+      "coordinates": { "x": 600, "y": 200 },
+      "icon": "icon.svg"
     },
     {
       "id": "f9fda3d8-2024-4122-b5fd-9a4945183fe0",
       "name": "Troponin Biomarker",
       "type": "workflow",
       "coordinates": { "x": 600, "y": 400 },
+      "icon": "icon.svg",
       "metadata": [
         {
           "duration": {
@@ -134,6 +143,7 @@
       "name": "Clinical Assessment",
       "type": "workflow",
       "coordinates": { "x": 700, "y": 400 },
+      "icon": "icon.svg",
       "metadata": [
         {
           "duration": {
@@ -148,6 +158,7 @@
       "name": "Biomarker Positive",
       "type": "decision",
       "coordinates": { "x": 800, "y": 400 },
+      "icon": "icon.svg",
       "direction": "Diverging",
       "metadata": [
         {
@@ -169,6 +180,7 @@
       "name": "NSTEMI",
       "type": "decision",
       "coordinates": { "x": 900, "y": 300 },
+      "icon": "icon.svg",
       "direction": "Diverging",
       "metadata": [
         {
@@ -190,6 +202,7 @@
       "name": "ACS",
       "type": "decision",
       "coordinates": { "x": 900, "y": 500 },
+      "icon": "icon.svg",
       "direction": "Diverging",
       "metadata": [
         {
@@ -210,32 +223,37 @@
       "id": "f8a32c44-9353-4c39-8e5e-7ea66c2abf56",
       "name": "NSTEMI",
       "type": "end",
-      "coordinates": { "x": 1000, "y": 200 }
+      "coordinates": { "x": 1000, "y": 200 },
+      "icon": "icon.svg"
     },
     {
       "id": "73f06535-1356-4f15-a184-356ea459680d",
       "name": "",
       "type": "decision",
       "coordinates": { "x": 1000, "y": 400 },
+      "icon": "icon.svg",
       "direction": "Converging"
     },
     {
       "id": "be255c26-3673-4230-9497-4b8fd4dbffbf",
       "name": "Other",
       "type": "end",
-      "coordinates": { "x": 1000, "y": 600 }
+      "coordinates": { "x": 1000, "y": 600 },
+      "icon": "icon.svg"
     },
     {
       "id": "d570e3a3-0396-49a8-8f92-32eaf1ecdcaa",
       "name": "Delay",
       "type": "delay",
-      "coordinates": { "x": 1100, "y": 400 }
+      "coordinates": { "x": 1100, "y": 400 },
+      "icon": "icon.svg"
     },
     {
       "id": "8371703f-9bc7-4e7a-9fe0-196cc517fada",
       "name": "Troponin Biomarker",
       "type": "workflow",
       "coordinates": { "x": 1200, "y": 400 },
+      "icon": "icon.svg",
       "metadata": [
         {
           "duration": {
@@ -250,6 +268,7 @@
       "name": "Clinical Assessment",
       "type": "workflow",
       "coordinates": { "x": 1300, "y": 400 },
+      "icon": "icon.svg",
       "metadata": [
         {
           "duration": {
@@ -265,6 +284,7 @@
       "type": "decision",
       "direction": "Diverging",
       "coordinates": { "x": 1400, "y": 400 },
+      "icon": "icon.svg",
       "metadata": [
         {
           "prevalence": [
@@ -285,6 +305,7 @@
       "name": "NSTEMI",
       "type": "decision",
       "coordinates": { "x": 1500, "y": 300 },
+      "icon": "icon.svg",
       "direction": "Diverging",
       "metadata": [
         {
@@ -306,6 +327,7 @@
       "name": "ACS",
       "type": "decision",
       "coordinates": { "x": 1500, "y": 500 },
+      "icon": "icon.svg",
       "direction": "Diverging",
       "metadata": [
         {
@@ -326,20 +348,23 @@
       "id": "eb7d2e6f-d382-4a05-b5c4-eb629ee5258a",
       "name": "NSTEMI",
       "type": "end",
-      "coordinates": { "x": 1600, "y": 200 }
+      "coordinates": { "x": 1600, "y": 200 },
+      "icon": "icon.svg"
     },
     {
       "id": "947996f0-3ea5-42ae-9a1c-296ec2662f4e",
       "name": "",
       "type": "decision",
       "coordinates": { "x": 1600, "y": 400 },
+      "icon": "icon.svg",
       "direction": "Converging"
     },
     {
       "id": "3d66e968-70e2-42bd-9460-c3a924447da3",
       "name": "Other",
       "type": "end",
-      "coordinates": { "x": 1600, "y": 600 }
+      "coordinates": { "x": 1600, "y": 600 },
+      "icon": "icon.svg"
     },
     {
       "id": "fd2648ec-8cf9-4d68-80f5-5311298124ef",
@@ -347,6 +372,7 @@
       "type": "decision",
       "direction": "Diverging",
       "coordinates": { "x": 1700, "y": 400 },
+      "icon": "icon.svg",
       "metadata": [
         {
           "prevalence": [
@@ -365,14 +391,16 @@
     {
       "id": "28928320-9522-4f09-bac2-cda7090101ac",
       "name": "Unstable Angina",
+      "type": "end",
       "coordinates": { "x": 1800, "y": 300 },
-      "type": "end"
+      "icon": "icon.svg"
     },
     {
       "id": "2684f4c6-07f8-48b9-9b07-dd096f6240b8",
       "name": "Other",
+      "type": "end",
       "coordinates": { "x": 1800, "y": 500 },
-      "type": "end"
+      "icon": "icon.svg"
     }
   ],
   "connections": [
