@@ -61,7 +61,7 @@ describe("Given Graph imported", () => {
         it("then create 1 node takes", () => {
           let qty = 1;
           let results = Benchmark.Performance(
-            { structure: "Object", action: "createNodes" },
+            { structure: "Object", action: "createNodes", qty: qty },
             graph.createNodes,
             qty,
             details
@@ -71,7 +71,7 @@ describe("Given Graph imported", () => {
         it("then create 1 node consumes", () => {
           let qty = 1;
           let results = Benchmark.Memory(
-            { structure: "Object", action: "createNodes" },
+            { structure: "Object", action: "createNodes", qty: qty },
             graph.createNodes,
             qty,
             details
@@ -81,7 +81,7 @@ describe("Given Graph imported", () => {
         it("then create 10 node takes", () => {
           let qty = 10;
           let results = Benchmark.Performance(
-            { structure: "Object", action: "createNodes" },
+            { structure: "Object", action: "createNodes", qty: qty },
             graph.createNodes,
             qty,
             details
@@ -91,7 +91,7 @@ describe("Given Graph imported", () => {
         it("then create 10 node consumes", () => {
           let qty = 10;
           let results = Benchmark.Memory(
-            { structure: "Object", action: "createNodes" },
+            { structure: "Object", action: "createNodes", qty: qty },
             graph.createNodes,
             qty,
             details
@@ -251,7 +251,7 @@ describe("Given Graph imported", () => {
         it("then create 1 node takes", () => {
           let qty = 1;
           let results = Benchmark.Performance(
-            { structure: "Tuple", action: "createNodes" },
+            { structure: "Tuple", action: "createNodes", qty: qty },
             graph.createNodes,
             qty,
             details
@@ -261,7 +261,7 @@ describe("Given Graph imported", () => {
         it("then create 1 node consumes", () => {
           let qty = 1;
           let results = Benchmark.Memory(
-            { structure: "Tuple", action: "createNodes" },
+            { structure: "Tuple", action: "createNodes", qty: qty },
             graph.createNodes,
             qty,
             details
@@ -271,7 +271,7 @@ describe("Given Graph imported", () => {
         it("then create 10 node takes", () => {
           let qty = 10;
           let results = Benchmark.Performance(
-            { structure: "Tuple", action: "createNodes" },
+            { structure: "Tuple", action: "createNodes", qty: qty },
             graph.createNodes,
             qty,
             details
@@ -281,7 +281,7 @@ describe("Given Graph imported", () => {
         it("then create 10 node consumes", () => {
           let qty = 10;
           let results = Benchmark.Memory(
-            { structure: "Tuple", action: "createNodes" },
+            { structure: "Tuple", action: "createNodes", qty: qty },
             graph.createNodes,
             qty,
             details
