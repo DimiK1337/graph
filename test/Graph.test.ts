@@ -66,6 +66,39 @@ describe("Given Graph imported", () => {
         });
       });
     });
+    it("then graph.findNodeById exist", () => {
+      expect(graph.findNodeById).toBeDefined();
+    });
+    describe("Given nodes.length = 2", () => {
+      let nodes;
+      beforeEach(() => {
+        nodes = graph.addNode([], {
+          name: "Node1",
+          type: Utilities.getRandomElement<NodeType>(NodeTypes),
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        nodes = graph.addNode(nodes, {
+          name: "Node2",
+          type: Utilities.getRandomElement<NodeType>(NodeTypes),
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        nodes = structuredClone(nodes);
+      });
+      it("then nodes.length equals 2", () => {
+        expect(nodes.length).toBe(2);
+      });
+      describe("when graph.findNodeById(nodes, id)", () => {
+        let id;
+        beforeEach(() => {
+          id = nodes[1].id;
+        });
+        it("then graph.findNodeById(nodes, id) returns nodes[0]", () => {
+          expect(graph.findNodeById(nodes, id)).toEqual(nodes[1]);
+        });
+      });
+    });
   });
   describe("Given a Tuple factory is used to create a new Graph instance", () => {
     let graph;
@@ -121,6 +154,39 @@ describe("Given Graph imported", () => {
         });
         it("then nodes[0][4] equals details.icon", () => {
           expect(nodes[0][4]).toEqual(details.icon);
+        });
+      });
+    });
+    it("then graph.findNodeById exist", () => {
+      expect(graph.findNodeById).toBeDefined();
+    });
+    describe("Given nodes.length = 2", () => {
+      let nodes;
+      beforeEach(() => {
+        nodes = graph.addNode([], {
+          name: "Node1",
+          type: Utilities.getRandomElement<NodeType>(NodeTypes),
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        nodes = graph.addNode(nodes, {
+          name: "Node2",
+          type: Utilities.getRandomElement<NodeType>(NodeTypes),
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        nodes = structuredClone(nodes);
+      });
+      it("then nodes.length equals 2", () => {
+        expect(nodes.length).toBe(2);
+      });
+      describe("when graph.findNodeById(nodes, id)", () => {
+        let id;
+        beforeEach(() => {
+          id = nodes[1][0];
+        });
+        it("then graph.findNodeById(nodes, id) returns nodes[0]", () => {
+          expect(graph.findNodeById(nodes, id)).toEqual(nodes[1]);
         });
       });
     });
