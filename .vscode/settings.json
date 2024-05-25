@@ -5,7 +5,7 @@
     "**/docs": true,
     "**/node_modules": false,
     "**/coverage": true,
-    "**/tasks": true,
+    "**/tasks": false,
     "**/screenshots": true
   },
   "cSpell.words": [
