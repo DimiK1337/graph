@@ -251,13 +251,50 @@ describe("Given Graph imported", () => {
       it("then nodes.length equals 2", () => {
         expect(nodes.length).toBe(2);
       });
-      describe("when graph.findNodeById(nodes, id)", () => {
+      describe("when graph.removeNodeById(nodes, id)", () => {
         let id;
+        let results;
         beforeEach(() => {
           id = nodes[1].id;
         });
-        it("then graph.findNodeById(nodes, id) returns nodes[0]", () => {
-          expect(graph.findNodeById(nodes, id)).toEqual(nodes[1]);
+        it("then results returned has length equals 1", () => {
+          results = graph.removeNodeById(nodes, id);
+          expect(results.length).toBe(1);
+        });
+      });
+    });
+    it("then graph.removeNodeById exist", () => {
+      expect(graph.removeNodeById).toBeDefined();
+    });
+    describe("and nodes.length = 2", () => {
+      let nodes;
+      beforeEach(() => {
+        nodes = graph.addNode([], {
+          name: "Node1",
+          type: Utilities.getRandomElement<NodeType>(NodeTypes),
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        nodes = graph.addNode(nodes, {
+          name: "Node2",
+          type: Utilities.getRandomElement<NodeType>(NodeTypes),
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        nodes = structuredClone(nodes);
+      });
+      it("then nodes.length equals 2", () => {
+        expect(nodes.length).toBe(2);
+      });
+      describe("when graph.removeNodeById(nodes, id)", () => {
+        let id;
+        let results;
+        beforeEach(() => {
+          id = nodes[1].id;
+        });
+        it("then results returned has length equals 1", () => {
+          results = graph.removeNodeById(nodes, id);
+          expect(results.length).toBe(1);
         });
       });
     });
@@ -509,6 +546,41 @@ describe("Given Graph imported", () => {
         });
         it("then graph.findNodeById(nodes, id) returns nodes[0]", () => {
           expect(graph.findNodeById(nodes, id)).toEqual(nodes[1]);
+        });
+      });
+    });
+    it("then graph.removeNodeById exist", () => {
+      expect(graph.removeNodeById).toBeDefined();
+    });
+    describe("and nodes.length = 2", () => {
+      let nodes;
+      beforeEach(() => {
+        nodes = graph.addNode([], {
+          name: "Node1",
+          type: Utilities.getRandomElement<NodeType>(NodeTypes),
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        nodes = graph.addNode(nodes, {
+          name: "Node2",
+          type: Utilities.getRandomElement<NodeType>(NodeTypes),
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        nodes = structuredClone(nodes);
+      });
+      it("then nodes.length equals 2", () => {
+        expect(nodes.length).toBe(2);
+      });
+      describe("when graph.removeNodeById(nodes, id)", () => {
+        let id;
+        let results;
+        beforeEach(() => {
+          id = nodes[1][0];
+        });
+        it("then results returned has length equals 1", () => {
+          results = graph.removeNodeById(nodes, id);
+          expect(results.length).toBe(1);
         });
       });
     });
