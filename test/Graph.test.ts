@@ -251,15 +251,13 @@ describe("Given Graph imported", () => {
       it("then nodes.length equals 2", () => {
         expect(nodes.length).toBe(2);
       });
-      describe("when graph.removeNodeById(nodes, id)", () => {
+      describe("when graph.findNodeById(nodes, id)", () => {
         let id;
-        let results;
         beforeEach(() => {
           id = nodes[1].id;
         });
-        it("then results returned has length equals 1", () => {
-          results = graph.removeNodeById(nodes, id);
-          expect(results.length).toBe(1);
+        it("then graph.findNodeById(nodes, id) returns nodes[0]", () => {
+          expect(graph.findNodeById(nodes, id)).toEqual(nodes[1]);
         });
       });
     });
