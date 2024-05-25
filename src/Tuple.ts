@@ -4,6 +4,7 @@ import { Metadata } from "./Generic.types.js";
 import { TupleNode } from "./Tuple.types.js";
 
 export class Tuple {
+  public static structure = "tuple";
   public static create = ({ name, type, coordinates, icon }) =>
     [
       Utilities.uuid,
