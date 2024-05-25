@@ -18,11 +18,11 @@ describe("Given Graph imported", () => {
     it("then graph exist", () => {
       expect(graph).toBeDefined();
     });
-    it("then graph.nodeFactory exist", () => {
-      expect(graph.nodeFactory).toBeDefined();
+    it("then graph.node exist", () => {
+      expect(graph.node).toBeDefined();
     });
-    it("then graph.nodeFactory equals Object", () => {
-      expect(graph.nodeFactory).toBe(Object);
+    it("then graph.node equals Object", () => {
+      expect(graph.node).toBe(Object);
     });
     it("then graph.addNode exist", () => {
       expect(graph.addNode).toBeDefined();
@@ -108,11 +108,11 @@ describe("Given Graph imported", () => {
     it("then graph exist", () => {
       expect(graph).toBeDefined();
     });
-    it("then graph.nodeFactory exist", () => {
-      expect(graph.nodeFactory).toBeDefined();
+    it("then graph.node exist", () => {
+      expect(graph.node).toBeDefined();
     });
-    it("then graph.nodeFactory equals Object", () => {
-      expect(graph.nodeFactory).toBe(Tuple);
+    it("then graph.node equals Object", () => {
+      expect(graph.node).toBe(Tuple);
     });
     it("then graph.addNode exist", () => {
       expect(graph.addNode).toBeDefined();

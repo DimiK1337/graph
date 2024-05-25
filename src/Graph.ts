@@ -10,17 +10,17 @@ type NodeFactory = typeof Object | typeof Tuple;
 // Once performance testing is done, we can refactor to use a class instance
 // Also operations can return this to enable fluent interface
 export class Graph {
-  public nodeFactory: NodeFactory;
+  public node: NodeFactory;
   constructor(nodeFactory: NodeFactory) {
-    this.nodeFactory = nodeFactory;
+    this.node = nodeFactory;
   }
   addNode = (nodes: Node[], { name, type, coordinates, icon }) => {
-    const node = this.nodeFactory.create({ name, type, coordinates, icon });
+    const node = this.node.create({ name, type, coordinates, icon });
     nodes.push(node);
     return nodes;
   };
   findNodeById = (nodes: Node[], id: string) =>
-    this.nodeFactory.structure === "object"
+    this.node.structure === "object"
       ? nodes.find((node: ObjectNode) => node.id === id)
       : nodes.find((node: TupleNode) => node[0] === id);
 }
