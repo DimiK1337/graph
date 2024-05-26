@@ -20,6 +20,8 @@ export class Graph {
 
   addNode = (nodes: Node[], details) => [...nodes, this.node.create(details)];
 
+  addNodes = (nodes: Node[], newNodes: Node[]) => [...nodes, ...newNodes];
+
   findNodeById = (nodes: Node[], id: string) =>
     this.node.structure === "object"
       ? nodes.find((node: ObjectNode) => node.id === id)
