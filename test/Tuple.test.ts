@@ -1,8 +1,7 @@
 import { Utilities } from "utilities";
 import { NodeTypes, NodeType, Metadata } from "types";
 
-import { Tuple } from "tuple";
-import { TupleCoordinates, TupleNode } from "src/Tuple.types";
+import { Tuple, TupleCoordinates, TupleNode } from "tuple";
 
 describe("Given Tuple imported", () => {
   it("then Tuple is defined", () => {

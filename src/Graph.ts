@@ -1,8 +1,6 @@
-import { Node } from "./Types.js";
-import { Object } from "object";
-import { Tuple } from "tuple";
-import { ObjectNode } from "./Object.types.js";
-import { TupleNode } from "./Tuple.types.js";
+import { Node, Nodes } from "./Types.js";
+import { Object, ObjectNode } from "object";
+import { Tuple, TupleNode } from "tuple";
 import { Metadata } from "types";
 
 type NodeFactory = typeof Object | typeof Tuple;
@@ -16,24 +14,27 @@ export class Graph {
     this.node = nodeFactory;
   }
 
-  createNodes = (qty: number, details) =>
+  createNodes = (qty: number, details): Nodes =>
     Array.from({ length: qty }, () => this.node.create(details));
 
-  addNode = (nodes: Node[], details) => [...nodes, this.node.create(details)];
+  addNode = (nodes: Nodes, details): Nodes => [
+    ...nodes,
+    this.node.create(details),
+  ];
 
-  addNodes = (nodes: Node[], newNodes: Node[]) => [...nodes, ...newNodes];
+  addNodes = (nodes: Nodes, newNodes: Nodes): Nodes => [...nodes, ...newNodes];
 
-  findNodeById = (nodes: Node[], id: string) =>
+  findNodeById = (nodes: Nodes, id: string): Node =>
     this.node.structure === "object"
       ? nodes.find((node: ObjectNode) => node.id === id)
       : nodes.find((node: TupleNode) => node[0] === id);
 
-  findNodesByType = (nodes: Node[], type: string) =>
+  findNodesByType = (nodes: Nodes, type: string): Nodes =>
     this.node.structure === "object"
       ? nodes.filter((node: ObjectNode) => node.type === type)
       : nodes.filter((node: TupleNode) => node[2] === type);
 
-  addNodeMetadata = (nodes: Node[], id: string, metadata: Metadata) => {
+  addNodeMetadata = (nodes: Nodes, id: string, metadata: Metadata): Nodes => {
     let addMetadata = (node, metadata) => this.node.extend(node, metadata);
     return this.node.structure === "object"
       ? nodes.map((node: ObjectNode) =>
@@ -44,7 +45,7 @@ export class Graph {
         );
   };
 
-  moveAllNodes = (nodes: Node[], offset) => {
+  moveAllNodes = (nodes: Nodes, offset): Nodes => {
     let moveNode = (node, coordinates) => this.node.move(node, coordinates);
     return this.node.structure === "object"
       ? nodes.map((node: ObjectNode) =>
@@ -61,7 +62,7 @@ export class Graph {
         );
   };
 
-  removeNodeById = (nodes: Node[], id: string) =>
+  removeNodeById = (nodes: Nodes, id: string): Nodes =>
     this.node.structure === "object"
       ? nodes.filter((node: ObjectNode) => node.id !== id)
       : nodes.filter((node: TupleNode) => node[0] !== id);

@@ -1,4 +1,6 @@
 import { Utilities } from "utilities";
+
+// When benchmarking, ensure you use `structuredClone` before passing in nodes
 import { Benchmark } from "./Benchmark.js";
 
 import { NodeTypes, NodeType } from "types";

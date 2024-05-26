@@ -1,7 +1,25 @@
 import { Utilities } from "./utilities/Utilities.js";
-import { Metadata } from "./Generic.types.js";
+import { UUID, NodeType, Icon, Metadata, GraphMeta } from "./Generic.types.js";
 
-import { TupleNode } from "./Tuple.types.js";
+export type TupleCoordinates = [number, number];
+export type TupleNode = [
+  UUID,
+  string,
+  NodeType,
+  TupleCoordinates,
+  Icon?,
+  Metadata[]?
+];
+export type TupleConnectionCoordinates = [TupleCoordinates, TupleCoordinates];
+export type TupleConnection = [
+  UUID,
+  string,
+  UUID,
+  UUID,
+  TupleConnectionCoordinates
+];
+
+export type TuplePathway = [GraphMeta, TupleNode[], TupleConnection[]];
 
 export class Tuple {
   public static structure = "tuple";

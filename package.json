@@ -18,6 +18,7 @@
     "build.doc": "npx typedoc --tsconfig build.test.json --entryPoints ./src/Calculator.ts",
     "prestart": "npm run build.lib",
     "start": "http-server -a 127.0.0.1 -o /demo",
+    "document": "npx typedoc --tsconfig build.test.json",
     "postinstall": "node ./tasks/injectImportmap.mjs"
   },
   "repository": {

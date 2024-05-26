@@ -1,8 +1,7 @@
 import { Utilities } from "utilities";
 import { NodeTypes, NodeType, Metadata } from "types";
 
-import { Object } from "object";
-import { ObjectNode, ObjectCoordinates } from "src/Object.types";
+import { Object, ObjectNode, ObjectCoordinates } from "object";
 
 describe("Given Object imported", () => {
   it("then Objet is defined", () => {

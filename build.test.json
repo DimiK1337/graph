@@ -16,6 +16,14 @@
   },
   "include": ["./src/**/*", "./test/**/*"],
   "typedocOptions": {
+    "entryPoints": [
+      "./src/Object.ts",
+      "./src/Tuple.ts",
+      "./src/Graph.ts",
+      "./src/utilities/Utilities.ts",
+      "./src/Generic.types.ts",
+      "./src/Types.ts"
+    ],
     "excludePrivate": true,
     "excludeProtected": true,
     "disableSources": true,
