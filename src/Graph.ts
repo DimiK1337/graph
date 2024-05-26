@@ -3,6 +3,7 @@ import { Object } from "object";
 import { Tuple } from "tuple";
 import { ObjectNode } from "./Object.types.js";
 import { TupleNode } from "./Tuple.types.js";
+import { Metadata } from "types";
 
 type NodeFactory = typeof Object | typeof Tuple;
 
@@ -31,6 +32,17 @@ export class Graph {
     this.node.structure === "object"
       ? nodes.filter((node: ObjectNode) => node.type === type)
       : nodes.filter((node: TupleNode) => node[2] === type);
+
+  addNodeMetadata = (nodes: Node[], id: string, metadata: Metadata) => {
+    let addMetadata = (node, metadata) => this.node.extend(node, metadata);
+    return this.node.structure === "object"
+      ? nodes.map((node: ObjectNode) =>
+          node.id === id ? addMetadata(node, metadata) : node
+        )
+      : nodes.map((node: TupleNode) =>
+          node[0] === id ? addMetadata(node, metadata) : node
+        );
+  };
 
   removeNodeById = (nodes: Node[], id: string) =>
     this.node.structure === "object"
