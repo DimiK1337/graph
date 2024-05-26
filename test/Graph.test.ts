@@ -302,6 +302,53 @@ describe("Given Graph imported", () => {
         });
       });
     });
+    it("then graph.findNodesByType exist", () => {
+      expect(graph.findNodesByType).toBeDefined();
+    });
+    describe("and nodes has 4 nodes of which two of type workflow", () => {
+      let nodes;
+      beforeEach(() => {
+        nodes = graph.addNode([], {
+          name: "Node1",
+          type: "workflow",
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        nodes = graph.addNode(nodes, {
+          name: "Node2",
+          type: "workflow",
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        nodes = graph.addNode(nodes, {
+          name: "Node3",
+          type: "decision",
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        nodes = graph.addNode(nodes, {
+          name: "Node4",
+          type: "decision",
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        nodes = structuredClone(nodes);
+      });
+      it("then nodes.length equals 4", () => {
+        expect(nodes.length).toBe(4);
+      });
+      describe("when graph.findNodesByType(nodes, type) where type equal workflow", () => {
+        let type;
+        let results;
+        beforeEach(() => {
+          type = "workflow";
+          results = graph.findNodesByType(nodes, type);
+        });
+        it("then results.length equals 2", () => {
+          expect(results.length).toBe(2);
+        });
+      });
+    });
     it("then graph.removeNodeById exist", () => {
       expect(graph.removeNodeById).toBeDefined();
     });
@@ -626,6 +673,53 @@ describe("Given Graph imported", () => {
         });
         it("then graph.findNodeById(nodes, id) returns nodes[0]", () => {
           expect(graph.findNodeById(nodes, id)).toEqual(nodes[1]);
+        });
+      });
+    });
+    it("then graph.findNodesByType exist", () => {
+      expect(graph.findNodesByType).toBeDefined();
+    });
+    describe("and nodes has 4 nodes of which two of type workflow", () => {
+      let nodes;
+      beforeEach(() => {
+        nodes = graph.addNode([], {
+          name: "Node1",
+          type: "workflow",
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        nodes = graph.addNode(nodes, {
+          name: "Node2",
+          type: "workflow",
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        nodes = graph.addNode(nodes, {
+          name: "Node3",
+          type: "decision",
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        nodes = graph.addNode(nodes, {
+          name: "Node4",
+          type: "decision",
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        nodes = structuredClone(nodes);
+      });
+      it("then nodes.length equals 4", () => {
+        expect(nodes.length).toBe(4);
+      });
+      describe("when graph.findNodesByType(nodes, type) where type equal workflow", () => {
+        let type;
+        let results;
+        beforeEach(() => {
+          type = "workflow";
+          results = graph.findNodesByType(nodes, type);
+        });
+        it("then results.length equals 2", () => {
+          expect(results.length).toBe(2);
         });
       });
     });
