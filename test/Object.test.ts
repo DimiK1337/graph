@@ -2,188 +2,190 @@ import { Utilities } from "utilities";
 import { NodeTypes, NodeType, Metadata } from "types";
 
 import { Object } from "object";
+import { ObjectNode, ObjectCoordinates } from "src/Object.types";
 
 describe("Given Object imported", () => {
-  it("then Object exist", () => {
+  it("then Objet is defined", () => {
     expect(Object).toBeDefined();
   });
-  describe("Given Object exist", () => {
-    it("then Object.structure exist", () => {
-      expect(Object.structure).toBeDefined();
+  it("then Object.structure static property is defined", () => {
+    expect(Object.structure).toBeDefined();
+  });
+  it("then Object.create static method is defined", () => {
+    expect(Object.create).toBeDefined();
+  });
+  it("then Object.extend static method is defined", () => {
+    expect(Object.extend).toBeDefined();
+  });
+  it("then Object.move static method is defined", () => {
+    expect(Object.move).toBeDefined();
+  });
+});
+
+describe("Given Object.structure static property exist", () => {
+  it("then Object.structure equals object", () => {
+    expect(Object.structure).toEqual("object");
+  });
+});
+
+describe("Given Object.create static method exist", () => {
+  describe("when node = Object.create(details)", () => {
+    let details;
+    let node: ObjectNode;
+    beforeEach(() => {
+      details = {
+        name: "Node",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
+      };
+      node = Object.create(details);
     });
-    it("then Object.structure equals object", () => {
-      expect(Object.structure).toEqual("object");
+    it("then node is exist", () => {
+      expect(node).toBeDefined();
     });
-    it("then Object.create exist", () => {
-      expect(Object.create).toBeDefined();
+    it("then node.id exist", () => {
+      expect(node.id).toBeDefined();
     });
-    describe("when result = Object.create(node)", () => {
-      let details;
-      beforeEach(() => {
-        details = {
-          name: "Node",
-          type: Utilities.getRandomElement<NodeType>(NodeTypes),
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        };
-      });
-      it("then result exist", () => {
-        let result = Object.create(details);
-        expect(result).toBeDefined();
-      });
-      describe("Given result exist", () => {
-        let result;
-        beforeEach(() => {
-          result = Object.create(details);
-        });
-        it("then result.id exist", () => {
-          expect(result.id).toBeDefined();
-        });
-        it("then result.name exist", () => {
-          expect(result.name).toBeDefined();
-        });
-        it("then result.name equals details.name", () => {
-          expect(result.name).toBe(details.name);
-        });
-        it("then result.type exist", () => {
-          expect(result.type).toBeDefined();
-        });
-        it("then result.type equals details.type", () => {
-          expect(result.type).toBe(details.type);
-        });
-        it("then result.coordinates exist", () => {
-          expect(result.coordinates).toBeDefined();
-        });
-        it("then result.coordinates equals details.coordinates", () => {
-          expect(result.coordinates).toBe(details.coordinates);
-        });
-        it("then result.icon exist", () => {
-          expect(result.icon).toBeDefined();
-        });
-        it("then result.icon equals details.icon", () => {
-          expect(result.icon).toBe(details.icon);
-        });
-      });
+    it("then node.name exist", () => {
+      expect(node.name).toBeDefined();
     });
-    it("then Object.extend exist", () => {
-      expect(Object.extend).toBeDefined();
+    it("then node.type exist", () => {
+      expect(node.type).toBeDefined();
     });
-    describe("when result = Object.extend(node, metadata)", () => {
-      let node;
-      let metadata: Metadata;
-      beforeEach(() => {
-        node = Object.create({
-          name: "Node",
-          type: Utilities.getRandomElement<NodeType>(NodeTypes),
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        });
-        metadata = {
-          arrival: {
-            distribution: "exponential",
-            parameters: [{ rate: 1 }],
-          },
-        };
-      });
-      it("then result exist", () => {
-        let result = Object.extend(node, metadata);
-        expect(result).toBeDefined();
-      });
-      describe("Given result exist", () => {
-        let result;
-        beforeEach(() => {
-          result = Object.extend(node, metadata);
-        });
-        it("then result.id exist", () => {
-          expect(result.id).toBeDefined();
-        });
-        it("then result.id equals node.id", () => {
-          expect(result.id).toBe(node.id);
-        });
-        it("then result.name exist", () => {
-          expect(result.name).toBeDefined();
-        });
-        it("then result.name equals node.name", () => {
-          expect(result.name).toBe(node.name);
-        });
-        it("then result.type exist", () => {
-          expect(result.type).toBeDefined();
-        });
-        it("then result.type equals node.type", () => {
-          expect(result.type).toBe(node.type);
-        });
-        it("then result.coordinates exist", () => {
-          expect(result.coordinates).toBeDefined();
-        });
-        it("then result.coordinates equals node.coordinates", () => {
-          expect(result.coordinates).toBe(node.coordinates);
-        });
-        it("then result.icon exist", () => {
-          expect(result.icon).toBeDefined();
-        });
-        it("then result.icon equals node.icon", () => {
-          expect(result.icon).toBe(node.icon);
-        });
-        it("then result.metadata exist", () => {
-          expect(result.metadata).toBeDefined();
-        });
-        it("then result.metadata equals metadata", () => {
-          expect(result.metadata).toBe(metadata);
-        });
-      });
+    it("then node.coordinates exist", () => {
+      expect(node.coordinates).toBeDefined();
     });
-    it("then Object.move exist", () => {
-      expect(Object.move).toBeDefined();
+    it("then node.icon exist", () => {
+      expect(node.icon).toBeDefined();
     });
-    describe("when result = Object.move(node, coordinates)", () => {
-      let node;
-      let coordinates;
-      beforeEach(() => {
-        node = Object.create({
-          name: "Node",
-          type: Utilities.getRandomElement<NodeType>(NodeTypes),
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        });
-        coordinates = { x: 1, y: 1 };
+    it("then node.name equals details.name", () => {
+      expect(node.name).toBe(details.name);
+    });
+    it("then node.type equals details.type", () => {
+      expect(node.type).toEqual(details.type);
+    });
+    it("then node.coordinates equals details.coordinates", () => {
+      expect(node.coordinates).toEqual(details.coordinates);
+    });
+    it("then node.icon equals details.icon", () => {
+      expect(node.icon).toEqual(details.icon);
+    });
+  });
+});
+
+describe("Given Object.extend static method exist", () => {
+  describe("when extendedNode = Object.extend(node, metadata)", () => {
+    let node: ObjectNode;
+    let metadata: Metadata;
+    let extendedNode: ObjectNode;
+    beforeEach(() => {
+      node = Object.create({
+        name: "Node",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
       });
-      it("then result exist", () => {
-        let result = Object.move(node, coordinates);
-        expect(result).toBeDefined();
+      metadata = {
+        arrival: {
+          distribution: "exponential",
+          parameters: [{ rate: 1 }],
+        },
+      };
+      extendedNode = Object.extend(node, metadata);
+    });
+    it("then extendedNode exist", () => {
+      expect(extendedNode).toBeDefined();
+    });
+    it("then extendedNode.id exist", () => {
+      expect(extendedNode.id).toBeDefined();
+    });
+    it("then extendedNode.name exist", () => {
+      expect(extendedNode.name).toBeDefined();
+    });
+    it("then extendedNode.type exist", () => {
+      expect(extendedNode.type).toBeDefined();
+    });
+    it("then extendedNode.coordinates exist", () => {
+      expect(extendedNode.coordinates).toBeDefined();
+    });
+    it("then extendedNode.icon exist", () => {
+      expect(extendedNode.icon).toBeDefined();
+    });
+    it("then extendedNode.metadata exist", () => {
+      expect(extendedNode.metadata).toBeDefined();
+    });
+    it("then extendedNode.id equals node.id", () => {
+      expect(extendedNode.id).toEqual(node.id);
+    });
+    it("then extendedNode.name equals node.name", () => {
+      expect(extendedNode.name).toEqual(node.name);
+    });
+    it("then extendedNode.type equals node.type", () => {
+      expect(extendedNode.type).toEqual(node.type);
+    });
+    it("then extendedNode.coordinates equals node.coordinates", () => {
+      expect(extendedNode.coordinates).toEqual(node.coordinates);
+    });
+    it("then extendedNode.icon equals node.icon", () => {
+      expect(extendedNode.icon).toEqual(node.icon);
+    });
+    it("then result.metadata equals metadata", () => {
+      expect(extendedNode.metadata[0]).toEqual(metadata);
+    });
+  });
+});
+
+describe("Given Object.move static method exist", () => {
+  describe("when updateNode = Object.move(node, coordinates)", () => {
+    let node: ObjectNode;
+    let coordinates: ObjectCoordinates;
+    let updatedNode: ObjectNode;
+    beforeEach(() => {
+      node = Object.create({
+        name: "Node",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
       });
-      describe("Given result exist", () => {
-        let result;
-        beforeEach(() => {
-          result = Object.move(node, coordinates);
-        });
-        it("then result.id exist", () => {
-          expect(result.id).toBeDefined();
-        });
-        it("then result.id equals node.id", () => {
-          expect(result.id).toBe(node.id);
-        });
-        it("then result.name exist", () => {
-          expect(result.name).toBeDefined();
-        });
-        it("then result.name equals node.name", () => {
-          expect(result.name).toBe(node.name);
-        });
-        it("then result.type exist", () => {
-          expect(result.type).toBeDefined();
-        });
-        it("then result.type equals node.type", () => {
-          expect(result.type).toBe(node.type);
-        });
-        it("then result.coordinates exist", () => {
-          expect(result.coordinates).toBeDefined();
-        });
-        it("then result.coordinates equals coordinates", () => {
-          expect(result.coordinates).toBe(coordinates);
-        });
-        it("then result.coordinates is not equal to node.coordinates", () => {
-          expect(result.coordinates).not.toBe(node.coordinates);
-        });
-      });
+      coordinates = { x: 1, y: 1 };
+      updatedNode = Object.move(node, coordinates);
+    });
+    it("then updatedNode exist", () => {
+      expect(updatedNode).toBeDefined();
+    });
+    it("then updatedNode.id exist", () => {
+      expect(updatedNode.id).toBeDefined();
+    });
+    it("then updatedNode.name exist", () => {
+      expect(updatedNode.name).toBeDefined();
+    });
+    it("then updatedNode.type exist", () => {
+      expect(updatedNode.type).toBeDefined();
+    });
+    it("then updatedNode.coordinates exist", () => {
+      expect(updatedNode.coordinates).toBeDefined();
+    });
+    it("then updatedNode.icon exist", () => {
+      expect(updatedNode.icon).toBeDefined();
+    });
+    it("then updatedNode.id equals node.id", () => {
+      expect(updatedNode.id).toEqual(node.id);
+    });
+    it("then updatedNode.name equals node.name", () => {
+      expect(updatedNode.name).toEqual(node.name);
+    });
+    it("then updatedNode.type equals node.type", () => {
+      expect(updatedNode.type).toEqual(node.type);
+    });
+    it("then result.coordinates equals coordinates", () => {
+      expect(updatedNode.coordinates).toEqual(coordinates);
+    });
+    it("then result.coordinates is not equal to node.coordinates", () => {
+      expect(updatedNode.coordinates).not.toEqual(node.coordinates);
+    });
+    it("then updatedNode.icon equals node.icon", () => {
+      expect(updatedNode.icon).toEqual(node.icon);
     });
   });
 });

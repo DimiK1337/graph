@@ -7,7 +7,7 @@ export type TupleNode = [
   NodeType,
   TupleCoordinates,
   Icon?,
-  Metadata?
+  Metadata[]?
 ];
 export type TupleConnectionCoordinates = [TupleCoordinates, TupleCoordinates];
 export type TupleConnection = [

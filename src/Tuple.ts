@@ -15,7 +15,7 @@ export class Tuple {
     ] as TupleNode;
 
   public static extend = (node: TupleNode, metadata: Metadata): TupleNode => {
-    node[5] = metadata;
+    node[5] = Array.isArray(node[5]) ? [...node[5], metadata] : [metadata];
     return node;
   };
 

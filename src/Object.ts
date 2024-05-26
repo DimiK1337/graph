@@ -14,15 +14,19 @@ export class Object {
       icon,
     } as ObjectNode);
 
-  public static extend = (node: ObjectNode, metadata: Metadata) =>
-    ({
-      ...node,
-      metadata,
-    } as ObjectNode);
+  public static extend = (
+    node: ObjectNode,
+    metadata: Metadata
+  ): ObjectNode => ({
+    ...node,
+    metadata: node.metadata ? [...node.metadata, metadata] : [metadata],
+  });
 
-  public static move = (node: ObjectNode, coordinates: ObjectCoordinates) =>
-    ({
-      ...node,
-      coordinates,
-    } as ObjectNode);
+  public static move = (
+    node: ObjectNode,
+    coordinates: ObjectCoordinates
+  ): ObjectNode => ({
+    ...node,
+    coordinates,
+  });
 }
