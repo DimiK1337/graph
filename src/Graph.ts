@@ -44,6 +44,23 @@ export class Graph {
         );
   };
 
+  moveAllNodes = (nodes: Node[], offset) => {
+    let moveNode = (node, coordinates) => this.node.move(node, coordinates);
+    return this.node.structure === "object"
+      ? nodes.map((node: ObjectNode) =>
+          moveNode(node, {
+            x: node.coordinates.x + offset.x,
+            y: node.coordinates.y + offset.y,
+          })
+        )
+      : nodes.map((node: TupleNode) =>
+          moveNode(node, {
+            x: node[3][0] + offset.x,
+            y: node[3][1] + offset.y,
+          })
+        );
+  };
+
   removeNodeById = (nodes: Node[], id: string) =>
     this.node.structure === "object"
       ? nodes.filter((node: ObjectNode) => node.id !== id)
