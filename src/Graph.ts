@@ -15,13 +15,8 @@ export class Graph {
     this.node = nodeFactory;
   }
 
-  createNodes = (qty: number, details) => {
-    const nodes = [];
-    for (let i = 0; i < qty; i++) {
-      nodes.push(this.node.create(details));
-    }
-    return nodes;
-  };
+  createNodes = (qty: number, details) =>
+    Array.from({ length: qty }, () => this.node.create(details));
 
   addNode = (nodes: Node[], { name, type, coordinates, icon }) => {
     const node = this.node.create({ name, type, coordinates, icon });
