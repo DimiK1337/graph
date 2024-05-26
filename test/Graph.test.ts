@@ -40,6 +40,9 @@ describe("Given graph = new Graph(Object)", () => {
   it("then graph.addNodeMetadata exist", () => {
     expect(graph.addNodeMetadata).toBeDefined();
   });
+  it("then graph.moveAllNodes exist", () => {
+    expect(graph.moveAllNodes).toBeDefined();
+  });
   it("then graph.removeNodeById exist", () => {
     expect(graph.removeNodeById).toBeDefined();
   });
@@ -182,6 +185,33 @@ describe("Given graph = new Graph(Object)", () => {
     });
     it("then nodes[1].metadata[0] equals metadata", () => {
       expect(nodes[1].metadata[0]).toEqual(metadata);
+    });
+  });
+  describe("when nodes = graph.moveAllNodes(existingNodes, offset)", () => {
+    let existingNodes;
+    let offset;
+    let nodes;
+    beforeEach(() => {
+      existingNodes = graph.createNodes(2, {
+        name: "Node1",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
+      });
+      offset = { x: 1, y: 1 };
+      nodes = graph.moveAllNodes(existingNodes, offset);
+    });
+    it("then nodes exist", () => {
+      expect(nodes).toBeDefined();
+    });
+    it("then nodes.length equals 2", () => {
+      expect(nodes.length).toBe(2);
+    });
+    it("then nodes[1].coordinates.x equals 1", () => {
+      expect(nodes[1].coordinates.x).toEqual(1);
+    });
+    it("then nodes[1].coordinates.y equals 1", () => {
+      expect(nodes[1].coordinates.y).toEqual(1);
     });
   });
   describe("when nodes = graph.removeNodeById(existingNodes, id)", () => {
@@ -341,6 +371,9 @@ describe("Given graph = new Graph(Tuple)", () => {
   it("then graph.addNodeMetadata exist", () => {
     expect(graph.addNodeMetadata).toBeDefined();
   });
+  it("then graph.moveAllNodes exist", () => {
+    expect(graph.moveAllNodes).toBeDefined();
+  });
   it("then graph.removeNodeById exist", () => {
     expect(graph.removeNodeById).toBeDefined();
   });
@@ -483,6 +516,33 @@ describe("Given graph = new Graph(Tuple)", () => {
     });
     it("then nodes[1][5][0] equals metadata", () => {
       expect(nodes[1][5][0]).toEqual(metadata);
+    });
+  });
+  describe("when nodes = graph.moveAllNodes(existingNodes, offset)", () => {
+    let existingNodes;
+    let offset;
+    let nodes;
+    beforeEach(() => {
+      existingNodes = graph.createNodes(2, {
+        name: "Node1",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
+      });
+      offset = { x: 1, y: 1 };
+      nodes = graph.moveAllNodes(existingNodes, offset);
+    });
+    it("then nodes exist", () => {
+      expect(nodes).toBeDefined();
+    });
+    it("then nodes.length equals 2", () => {
+      expect(nodes.length).toBe(2);
+    });
+    it("then nodes[1][3][0] equals 1", () => {
+      expect(nodes[1][3][0]).toEqual(1);
+    });
+    it("then nodes[1][3][1] equals 1", () => {
+      expect(nodes[1][3][1]).toEqual(1);
     });
   });
   describe("when nodes = graph.removeNodeById(existingNodes, id)", () => {
