@@ -37,6 +37,9 @@ describe("Given graph = new Graph(Object)", () => {
   it("then graph.findNodesByType exist", () => {
     expect(graph.findNodesByType).toBeDefined();
   });
+  it("then graph.addNodeMetadata exist", () => {
+    expect(graph.addNodeMetadata).toBeDefined();
+  });
   it("then graph.removeNodeById exist", () => {
     expect(graph.removeNodeById).toBeDefined();
   });
@@ -148,6 +151,37 @@ describe("Given graph = new Graph(Object)", () => {
     });
     it("then nodes.length equals 4", () => {
       expect(nodes.length).toBe(2);
+    });
+  });
+  describe("when nodes = graph.addNodeMetadata(existingNodes, id, metadata)", () => {
+    let existingNodes;
+    let id;
+    let metadata;
+    let nodes;
+    beforeEach(() => {
+      existingNodes = graph.createNodes(2, {
+        name: "Node1",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
+      });
+      id = existingNodes[1].id;
+      metadata = {
+        arrival: {
+          distribution: "exponential",
+          parameters: [{ rate: 1 }],
+        },
+      };
+      nodes = graph.addNodeMetadata(existingNodes, id, metadata);
+    });
+    it("then nodes exist", () => {
+      expect(nodes).toBeDefined();
+    });
+    it("then nodes.length equals 2", () => {
+      expect(nodes.length).toBe(2);
+    });
+    it("then nodes[1].metadata[0] equals metadata", () => {
+      expect(nodes[1].metadata[0]).toEqual(metadata);
     });
   });
   describe("when nodes = graph.removeNodeById(existingNodes, id)", () => {
@@ -304,6 +338,9 @@ describe("Given graph = new Graph(Tuple)", () => {
   it("then graph.findNodesByType exist", () => {
     expect(graph.findNodesByType).toBeDefined();
   });
+  it("then graph.addNodeMetadata exist", () => {
+    expect(graph.addNodeMetadata).toBeDefined();
+  });
   it("then graph.removeNodeById exist", () => {
     expect(graph.removeNodeById).toBeDefined();
   });
@@ -415,6 +452,37 @@ describe("Given graph = new Graph(Tuple)", () => {
     });
     it("then nodes.length equals 4", () => {
       expect(nodes.length).toBe(2);
+    });
+  });
+  describe("when nodes = graph.addNodeMetadata(existingNodes, id, metadata)", () => {
+    let existingNodes;
+    let id;
+    let metadata;
+    let nodes;
+    beforeEach(() => {
+      existingNodes = graph.createNodes(2, {
+        name: "Node1",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
+      });
+      id = existingNodes[1][0];
+      metadata = {
+        arrival: {
+          distribution: "exponential",
+          parameters: [{ rate: 1 }],
+        },
+      };
+      nodes = graph.addNodeMetadata(existingNodes, id, metadata);
+    });
+    it("then nodes exist", () => {
+      expect(nodes).toBeDefined();
+    });
+    it("then nodes.length equals 2", () => {
+      expect(nodes.length).toBe(2);
+    });
+    it("then nodes[1][5][0] equals metadata", () => {
+      expect(nodes[1][5][0]).toEqual(metadata);
     });
   });
   describe("when nodes = graph.removeNodeById(existingNodes, id)", () => {
