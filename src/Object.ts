@@ -5,14 +5,13 @@ import { ObjectNode, ObjectCoordinates } from "./Object.types.js";
 
 export class Object {
   public static structure = "object";
-  public static create = ({ name, type, coordinates, icon }) =>
-    ({
-      id: Utilities.uuid,
-      name,
-      type,
-      coordinates,
-      icon,
-    } as ObjectNode);
+  public static create = ({ name, type, coordinates, icon }): ObjectNode => ({
+    id: Utilities.uuid,
+    name,
+    type,
+    coordinates,
+    icon,
+  });
 
   public static extend = (
     node: ObjectNode,
