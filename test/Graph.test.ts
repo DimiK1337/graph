@@ -160,6 +160,47 @@ describe("Given Graph imported", () => {
         });
       });
     });
+    it("then graph.addNodes exist", () => {
+      expect(graph.addNodes).toBeDefined();
+    });
+    describe("and nodes.length = 2", () => {
+      let nodes;
+      beforeEach(() => {
+        nodes = graph.addNode([], {
+          name: "Node1",
+          type: Utilities.getRandomElement<NodeType>(NodeTypes),
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        nodes = graph.addNode(nodes, {
+          name: "Node2",
+          type: Utilities.getRandomElement<NodeType>(NodeTypes),
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        nodes = structuredClone(nodes);
+      });
+      it("then nodes.length equals 2", () => {
+        expect(nodes.length).toBe(2);
+      });
+      describe("when graph.addNodes(nodes, newNodes)", () => {
+        let newNodes;
+        let results;
+        beforeEach(() => {
+          newNodes = graph.createNodes(2, {
+            name: "Node3",
+            type: Utilities.getRandomElement<NodeType>(NodeTypes),
+            coordinates: { x: 0, y: 0 },
+            icon: "./icon.svg",
+          });
+          results = graph.addNodes(nodes, newNodes);
+          results = structuredClone(results);
+        });
+        it("then results.length equals 4", () => {
+          expect(results.length).toBe(4);
+        });
+      });
+    });
     describe("and nodes = []", () => {
       let nodes;
       beforeEach(() => {
@@ -442,6 +483,47 @@ describe("Given Graph imported", () => {
             details
           );
           expect(results.length).toEqual(qty);
+        });
+      });
+    });
+    it("then graph.addNodes exist", () => {
+      expect(graph.addNodes).toBeDefined();
+    });
+    describe("and nodes.length = 2", () => {
+      let nodes;
+      beforeEach(() => {
+        nodes = graph.addNode([], {
+          name: "Node1",
+          type: Utilities.getRandomElement<NodeType>(NodeTypes),
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        nodes = graph.addNode(nodes, {
+          name: "Node2",
+          type: Utilities.getRandomElement<NodeType>(NodeTypes),
+          coordinates: { x: 0, y: 0 },
+          icon: "./icon.svg",
+        });
+        nodes = structuredClone(nodes);
+      });
+      it("then nodes.length equals 2", () => {
+        expect(nodes.length).toBe(2);
+      });
+      describe("when graph.addNodes(nodes, newNodes)", () => {
+        let newNodes;
+        let results;
+        beforeEach(() => {
+          newNodes = graph.createNodes(2, {
+            name: "Node3",
+            type: Utilities.getRandomElement<NodeType>(NodeTypes),
+            coordinates: { x: 0, y: 0 },
+            icon: "./icon.svg",
+          });
+          results = graph.addNodes(nodes, newNodes);
+          results = structuredClone(results);
+        });
+        it("then results.length equals 4", () => {
+          expect(results.length).toBe(4);
         });
       });
     });
