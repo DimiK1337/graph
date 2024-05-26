@@ -1,762 +1,545 @@
 import { Utilities } from "utilities";
-import { NodeTypes, NodeType } from "types";
-
-import { Object } from "object";
-import { Tuple } from "tuple";
-
-import { Graph } from "graph";
-
 import { Benchmark } from "./Benchmark.js";
 
+import { NodeTypes, NodeType } from "types";
+
+import { Graph } from "graph";
 describe("Given Graph imported", () => {
   it("then Graph exist", () => {
     expect(Graph).toBeDefined();
   });
-  describe("and a Object factory is used to create a new Graph instance", () => {
-    let graph;
+});
+
+import { Object } from "object";
+describe("Given graph = new Graph(Object)", () => {
+  let graph;
+  beforeEach(() => {
+    graph = new Graph(Object);
+  });
+  it("then graph exist", () => {
+    expect(graph).toBeDefined();
+  });
+  it("then graph.node exist", () => {
+    expect(graph.node).toBeDefined();
+  });
+  it("then graph.createNodes exist", () => {
+    expect(graph.createNodes).toBeDefined();
+  });
+  it("then graph.node equals Object", () => {
+    expect(graph.node).toBe(Object);
+  });
+  it("then graph.addNodes exist", () => {
+    expect(graph.addNodes).toBeDefined();
+  });
+  it("then graph.findNodeById exist", () => {
+    expect(graph.findNodeById).toBeDefined();
+  });
+  it("then graph.findNodesByType exist", () => {
+    expect(graph.findNodesByType).toBeDefined();
+  });
+  it("then graph.removeNodeById exist", () => {
+    expect(graph.removeNodeById).toBeDefined();
+  });
+  describe("when nodes = graph.createNodes(1, details)", () => {
+    let nodes;
     beforeEach(() => {
-      graph = new Graph(Object);
+      let details = {
+        name: "Node",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
+      };
+      nodes = graph.createNodes(1, details);
     });
-    it("then graph exist", () => {
-      expect(graph).toBeDefined();
+    it("then nodes exist", () => {
+      expect(nodes).toBeDefined();
     });
-    it("then graph.node exist", () => {
-      expect(graph.node).toBeDefined();
-    });
-    it("then graph.node equals Object", () => {
-      expect(graph.node).toBe(Object);
-    });
-    it("then graph.createNodes exist", () => {
-      expect(graph.createNodes).toBeDefined();
-    });
-    describe("and nodes is declared", () => {
-      let nodes;
-      describe("when graph.createNodes(1, details)", () => {
-        beforeEach(() => {
-          const details = {
-            name: "Node",
-            type: Utilities.getRandomElement<NodeType>(NodeTypes),
-            coordinates: { x: 0, y: 0 },
-            icon: "./icon.svg",
-          };
-          nodes = graph.createNodes(1, details);
-        });
-        it("then nodes exist", () => {
-          expect(nodes).toBeDefined();
-        });
-        it("then nodes.length equals 1", () => {
-          expect(nodes.length).toBe(1);
-        });
-      });
-      describe("when benchmarking graph.createNodes function", () => {
-        let details;
-        beforeEach(() => {
-          details = {
-            name: "Node",
-            type: Utilities.getRandomElement<NodeType>(NodeTypes),
-            coordinates: { x: 0, y: 0 },
-            icon: "./icon.svg",
-          };
-        });
-        it("then create 1 node takes", () => {
-          let qty = 1;
-          let results = Benchmark.Performance(
-            { structure: "Object", action: "createNodes", qty: qty },
-            graph.createNodes,
-            qty,
-            details
-          );
-          expect(results.length).toEqual(qty);
-        });
-        it("then create 1 node consumes", () => {
-          let qty = 1;
-          let results = Benchmark.Memory(
-            { structure: "Object", action: "createNodes", qty: qty },
-            graph.createNodes,
-            qty,
-            details
-          );
-          expect(results.length).toEqual(qty);
-        });
-        it("then create 10 node takes", () => {
-          let qty = 10;
-          let results = Benchmark.Performance(
-            { structure: "Object", action: "createNodes", qty: qty },
-            graph.createNodes,
-            qty,
-            details
-          );
-          expect(results.length).toEqual(qty);
-        });
-        it("then create 10 node consumes", () => {
-          let qty = 10;
-          let results = Benchmark.Memory(
-            { structure: "Object", action: "createNodes", qty: qty },
-            graph.createNodes,
-            qty,
-            details
-          );
-          expect(results.length).toEqual(qty);
-        });
-        it("then create 100 node takes", () => {
-          let qty = 100;
-          let results = Benchmark.Performance(
-            { structure: "Object", action: "createNodes", qty: qty },
-            graph.createNodes,
-            qty,
-            details
-          );
-          expect(results.length).toEqual(qty);
-        });
-        it("then create 100 node consumes", () => {
-          let qty = 100;
-          let results = Benchmark.Memory(
-            { structure: "Object", action: "createNodes", qty: qty },
-            graph.createNodes,
-            qty,
-            details
-          );
-          expect(results.length).toEqual(qty);
-        });
-        it("then create 1000 node takes", () => {
-          let qty = 1000;
-          let results = Benchmark.Performance(
-            { structure: "Object", action: "createNodes", qty: qty },
-            graph.createNodes,
-            qty,
-            details
-          );
-          expect(results.length).toEqual(qty);
-        });
-        it("then create 1000 node consumes", () => {
-          let qty = 1000;
-          let results = Benchmark.Memory(
-            { structure: "Object", action: "createNodes", qty: qty },
-            graph.createNodes,
-            qty,
-            details
-          );
-          expect(results.length).toEqual(qty);
-        });
-        it("then create 10000 node takes", () => {
-          let qty = 10000;
-          let results = Benchmark.Performance(
-            { structure: "Object", action: "createNodes", qty: qty },
-            graph.createNodes,
-            qty,
-            details
-          );
-          expect(results.length).toEqual(qty);
-        });
-        it("then create 10000 node consumes", () => {
-          let qty = 10000;
-          let results = Benchmark.Memory(
-            { structure: "Object", action: "createNodes", qty: qty },
-            graph.createNodes,
-            qty,
-            details
-          );
-          expect(results.length).toEqual(qty);
-        });
-      });
-    });
-    it("then graph.addNodes exist", () => {
-      expect(graph.addNodes).toBeDefined();
-    });
-    describe("and nodes.length = 2", () => {
-      let nodes;
-      beforeEach(() => {
-        nodes = graph.addNode([], {
-          name: "Node1",
-          type: Utilities.getRandomElement<NodeType>(NodeTypes),
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        });
-        nodes = graph.addNode(nodes, {
-          name: "Node2",
-          type: Utilities.getRandomElement<NodeType>(NodeTypes),
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        });
-        nodes = structuredClone(nodes);
-      });
-      it("then nodes.length equals 2", () => {
-        expect(nodes.length).toBe(2);
-      });
-      describe("when graph.addNodes(nodes, newNodes)", () => {
-        let newNodes;
-        let results;
-        beforeEach(() => {
-          newNodes = graph.createNodes(2, {
-            name: "Node3",
-            type: Utilities.getRandomElement<NodeType>(NodeTypes),
-            coordinates: { x: 0, y: 0 },
-            icon: "./icon.svg",
-          });
-          results = graph.addNodes(nodes, newNodes);
-          results = structuredClone(results);
-        });
-        it("then results.length equals 4", () => {
-          expect(results.length).toBe(4);
-        });
-      });
-    });
-    describe("and nodes = []", () => {
-      let nodes;
-      beforeEach(() => {
-        nodes = [];
-      });
-      it("then nodes exist", () => {
-        expect(nodes).toBeDefined();
-      });
-      it("then nodes.length equals 0", () => {
-        expect(nodes.length).toBe(0);
-      });
-      describe("when graph.addNode(nodes, { name, type, coordinates, icon })", () => {
-        let details;
-        beforeEach(() => {
-          details = {
-            name: "Node",
-            type: Utilities.getRandomElement<NodeType>(NodeTypes),
-            coordinates: { x: 0, y: 0 },
-            icon: "./icon.svg",
-          };
-          nodes = graph.addNode(nodes, details);
-        });
-        it("then nodes.length equals 1", () => {
-          expect(nodes.length).toBe(1);
-        });
-        it("then nodes[0].name equals details.name", () => {
-          expect(nodes[0].name).toEqual(details.name);
-        });
-        it("then nodes[0].type equals details.type", () => {
-          expect(nodes[0].type).toEqual(details.type);
-        });
-        it("then nodes[0].coordinates equals details.coordinates", () => {
-          expect(nodes[0].coordinates).toEqual(details.coordinates);
-        });
-        it("then nodes[0].icon equals details.icon", () => {
-          expect(nodes[0].icon).toEqual(details.icon);
-        });
-      });
-      describe("when benchmarking graph.addNode function", () => {
-        let details;
-        beforeEach(() => {
-          details = {
-            name: "Node",
-            type: Utilities.getRandomElement<NodeType>(NodeTypes),
-            coordinates: { x: 0, y: 0 },
-            icon: "./icon.svg",
-          };
-        });
-        it("then adding 1 node to nodes takes", () => {
-          let results = Benchmark.Performance(
-            { structure: "Object", action: "addNode" },
-            graph.addNode,
-            [],
-            details
-          );
-          expect(results.length).toEqual(1);
-        });
-        it("then adding 1 node to nodes consumes", () => {
-          let results = Benchmark.Memory(
-            { structure: "Object", action: "addNode" },
-            graph.addNode,
-            [],
-            details
-          );
-          expect(results.length).toEqual(1);
-        });
-      });
-    });
-    it("then graph.findNodeById exist", () => {
-      expect(graph.findNodeById).toBeDefined();
-    });
-    describe("and nodes.length = 2", () => {
-      let nodes;
-      beforeEach(() => {
-        nodes = graph.addNode([], {
-          name: "Node1",
-          type: Utilities.getRandomElement<NodeType>(NodeTypes),
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        });
-        nodes = graph.addNode(nodes, {
-          name: "Node2",
-          type: Utilities.getRandomElement<NodeType>(NodeTypes),
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        });
-        nodes = structuredClone(nodes);
-      });
-      it("then nodes.length equals 2", () => {
-        expect(nodes.length).toBe(2);
-      });
-      describe("when graph.findNodeById(nodes, id)", () => {
-        let id;
-        beforeEach(() => {
-          id = nodes[1].id;
-        });
-        it("then graph.findNodeById(nodes, id) returns nodes[0]", () => {
-          expect(graph.findNodeById(nodes, id)).toEqual(nodes[1]);
-        });
-      });
-    });
-    it("then graph.findNodesByType exist", () => {
-      expect(graph.findNodesByType).toBeDefined();
-    });
-    describe("and nodes has 4 nodes of which two of type workflow", () => {
-      let nodes;
-      beforeEach(() => {
-        nodes = graph.addNode([], {
-          name: "Node1",
-          type: "workflow",
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        });
-        nodes = graph.addNode(nodes, {
-          name: "Node2",
-          type: "workflow",
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        });
-        nodes = graph.addNode(nodes, {
-          name: "Node3",
-          type: "decision",
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        });
-        nodes = graph.addNode(nodes, {
-          name: "Node4",
-          type: "decision",
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        });
-        nodes = structuredClone(nodes);
-      });
-      it("then nodes.length equals 4", () => {
-        expect(nodes.length).toBe(4);
-      });
-      describe("when graph.findNodesByType(nodes, type) where type equal workflow", () => {
-        let type;
-        let results;
-        beforeEach(() => {
-          type = "workflow";
-          results = graph.findNodesByType(nodes, type);
-        });
-        it("then results.length equals 2", () => {
-          expect(results.length).toBe(2);
-        });
-      });
-    });
-    it("then graph.removeNodeById exist", () => {
-      expect(graph.removeNodeById).toBeDefined();
-    });
-    describe("and nodes.length = 2", () => {
-      let nodes;
-      beforeEach(() => {
-        nodes = graph.addNode([], {
-          name: "Node1",
-          type: Utilities.getRandomElement<NodeType>(NodeTypes),
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        });
-        nodes = graph.addNode(nodes, {
-          name: "Node2",
-          type: Utilities.getRandomElement<NodeType>(NodeTypes),
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        });
-        nodes = structuredClone(nodes);
-      });
-      it("then nodes.length equals 2", () => {
-        expect(nodes.length).toBe(2);
-      });
-      describe("when graph.removeNodeById(nodes, id)", () => {
-        let id;
-        let results;
-        beforeEach(() => {
-          id = nodes[1].id;
-        });
-        it("then results returned has length equals 1", () => {
-          results = graph.removeNodeById(nodes, id);
-          expect(results.length).toBe(1);
-        });
-      });
+    it("then nodes.length equals 1", () => {
+      expect(nodes.length).toBe(1);
     });
   });
-  describe("and a Tuple factory is used to create a new Graph instance", () => {
-    let graph;
+  describe("when nodes = graph.addNode([], details)", () => {
+    let nodes;
     beforeEach(() => {
-      graph = new Graph(Tuple);
+      let details = {
+        name: "Node1",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
+      };
+      nodes = graph.addNode([], details);
     });
-    it("then graph exist", () => {
-      expect(graph).toBeDefined();
+    it("then nodes exist", () => {
+      expect(nodes).toBeDefined();
     });
-    it("then graph.node exist", () => {
-      expect(graph.node).toBeDefined();
+    it("then nodes.length equals 1", () => {
+      expect(nodes.length).toBe(1);
     });
-    it("then graph.node equals Object", () => {
-      expect(graph.node).toBe(Tuple);
+  });
+  describe("when nodes = graph.addNodes(existingNodes, newNodes)", () => {
+    let existingNodes;
+    let newNodes;
+    let nodes;
+    beforeEach(() => {
+      existingNodes = graph.createNodes(2, {
+        name: "Node1",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
+      });
+      newNodes = graph.createNodes(2, {
+        name: "Node2",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
+      });
+      nodes = graph.addNodes(existingNodes, newNodes);
     });
-    it("then graph.addNode exist", () => {
-      expect(graph.addNode).toBeDefined();
+    it("then nodes exist", () => {
+      expect(nodes).toBeDefined();
     });
-    describe("and nodes is declared", () => {
-      let nodes;
-      describe("when graph.createNodes(1, details)", () => {
-        beforeEach(() => {
-          const details = {
-            name: "Node",
-            type: Utilities.getRandomElement<NodeType>(NodeTypes),
-            coordinates: { x: 0, y: 0 },
-            icon: "./icon.svg",
-          };
-          nodes = graph.createNodes(1, details);
-        });
-        it("then nodes exist", () => {
-          expect(nodes).toBeDefined();
-        });
-        it("then nodes.length equals 1", () => {
-          expect(nodes.length).toBe(1);
-        });
-      });
-      describe("when benchmarking graph.createNodes function", () => {
-        let details;
-        beforeEach(() => {
-          details = {
-            name: "Node",
-            type: Utilities.getRandomElement<NodeType>(NodeTypes),
-            coordinates: { x: 0, y: 0 },
-            icon: "./icon.svg",
-          };
-        });
-        it("then create 1 node takes", () => {
-          let qty = 1;
-          let results = Benchmark.Performance(
-            { structure: "Tuple", action: "createNodes", qty: qty },
-            graph.createNodes,
-            qty,
-            details
-          );
-          expect(results.length).toEqual(qty);
-        });
-        it("then create 1 node consumes", () => {
-          let qty = 1;
-          let results = Benchmark.Memory(
-            { structure: "Tuple", action: "createNodes", qty: qty },
-            graph.createNodes,
-            qty,
-            details
-          );
-          expect(results.length).toEqual(qty);
-        });
-        it("then create 10 node takes", () => {
-          let qty = 10;
-          let results = Benchmark.Performance(
-            { structure: "Tuple", action: "createNodes", qty: qty },
-            graph.createNodes,
-            qty,
-            details
-          );
-          expect(results.length).toEqual(qty);
-        });
-        it("then create 10 node consumes", () => {
-          let qty = 10;
-          let results = Benchmark.Memory(
-            { structure: "Tuple", action: "createNodes", qty: qty },
-            graph.createNodes,
-            qty,
-            details
-          );
-          expect(results.length).toEqual(qty);
-        });
-        it("then create 100 node takes", () => {
-          let qty = 100;
-          let results = Benchmark.Performance(
-            { structure: "Tuple", action: "createNodes", qty: qty },
-            graph.createNodes,
-            qty,
-            details
-          );
-          expect(results.length).toEqual(qty);
-        });
-        it("then create 100 node consumes", () => {
-          let qty = 100;
-          let results = Benchmark.Memory(
-            { structure: "Tuple", action: "createNodes", qty: qty },
-            graph.createNodes,
-            qty,
-            details
-          );
-          expect(results.length).toEqual(qty);
-        });
-        it("then create 1000 node takes", () => {
-          let qty = 1000;
-          let results = Benchmark.Performance(
-            { structure: "Tuple", action: "createNodes", qty: qty },
-            graph.createNodes,
-            qty,
-            details
-          );
-          expect(results.length).toEqual(qty);
-        });
-        it("then create 1000 node consumes", () => {
-          let qty = 1000;
-          let results = Benchmark.Memory(
-            { structure: "Tuple", action: "createNodes", qty: qty },
-            graph.createNodes,
-            qty,
-            details
-          );
-          expect(results.length).toEqual(qty);
-        });
-        it("then create 10000 node takes", () => {
-          let qty = 10000;
-          let results = Benchmark.Performance(
-            { structure: "Tuple", action: "createNodes", qty: qty },
-            graph.createNodes,
-            qty,
-            details
-          );
-          expect(results.length).toEqual(qty);
-        });
-        it("then create 10000 node consumes", () => {
-          let qty = 10000;
-          let results = Benchmark.Memory(
-            { structure: "Tuple", action: "createNodes", qty: qty },
-            graph.createNodes,
-            qty,
-            details
-          );
-          expect(results.length).toEqual(qty);
-        });
-      });
+    it("then nodes.length equals 4", () => {
+      expect(nodes.length).toBe(4);
     });
-    it("then graph.addNodes exist", () => {
-      expect(graph.addNodes).toBeDefined();
+  });
+  describe("when node = graph.findNodeById(existingNodes, id)", () => {
+    let existingNodes;
+    let id;
+    let node;
+    beforeEach(() => {
+      existingNodes = graph.createNodes(2, {
+        name: "Node1",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
+      });
+      id = existingNodes[1].id;
+      node = graph.findNodeById(existingNodes, id);
     });
-    describe("and nodes.length = 2", () => {
-      let nodes;
-      beforeEach(() => {
-        nodes = graph.addNode([], {
-          name: "Node1",
-          type: Utilities.getRandomElement<NodeType>(NodeTypes),
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        });
-        nodes = graph.addNode(nodes, {
-          name: "Node2",
-          type: Utilities.getRandomElement<NodeType>(NodeTypes),
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        });
-        nodes = structuredClone(nodes);
-      });
-      it("then nodes.length equals 2", () => {
-        expect(nodes.length).toBe(2);
-      });
-      describe("when graph.addNodes(nodes, newNodes)", () => {
-        let newNodes;
-        let results;
-        beforeEach(() => {
-          newNodes = graph.createNodes(2, {
-            name: "Node3",
-            type: Utilities.getRandomElement<NodeType>(NodeTypes),
-            coordinates: { x: 0, y: 0 },
-            icon: "./icon.svg",
-          });
-          results = graph.addNodes(nodes, newNodes);
-          results = structuredClone(results);
-        });
-        it("then results.length equals 4", () => {
-          expect(results.length).toBe(4);
-        });
-      });
+    it("then node exist", () => {
+      expect(node).toBeDefined();
     });
-    describe("and nodes = []", () => {
-      let nodes;
-      beforeEach(() => {
-        nodes = [];
-      });
-      it("then nodes exist", () => {
-        expect(nodes).toBeDefined();
-      });
-      it("then nodes.length equals 0", () => {
-        expect(nodes.length).toBe(0);
-      });
-      describe("when graph.addNode(nodes, { name, type, coordinates, icon })", () => {
-        let details;
-        beforeEach(() => {
-          details = {
-            name: "Node",
-            type: Utilities.getRandomElement<NodeType>(NodeTypes),
-            coordinates: { x: 0, y: 0 },
-            icon: "./icon.svg",
-          };
-          nodes = graph.addNode(nodes, details);
-        });
-        it("then nodes.length equals 1", () => {
-          expect(nodes.length).toBe(1);
-        });
-        it("then nodes[0][1] equals details.name", () => {
-          expect(nodes[0][1]).toEqual(details.name);
-        });
-        it("then nodes[0][2] equals details.type", () => {
-          expect(nodes[0][2]).toEqual(details.type);
-        });
-        it("then nodes[0][3] equals details.coordinates", () => {
-          let coordinates = [details.coordinates.x, details.coordinates.y];
-          expect(nodes[0][3]).toEqual(coordinates);
-        });
-        it("then nodes[0][4] equals details.icon", () => {
-          expect(nodes[0][4]).toEqual(details.icon);
-        });
-      });
-      describe("when benchmarking graph.addNode function", () => {
-        let details;
-        beforeEach(() => {
-          details = {
-            name: "Node",
-            type: Utilities.getRandomElement<NodeType>(NodeTypes),
-            coordinates: { x: 0, y: 0 },
-            icon: "./icon.svg",
-          };
-        });
-        it("then adding 1 node to nodes takes", () => {
-          let results = Benchmark.Performance(
-            { structure: "Tuple", action: "addNode" },
-            graph.addNode,
-            [],
-            details
-          );
-          expect(results.length).toEqual(1);
-        });
-        it("then adding 1 node to nodes consumes", () => {
-          let results = Benchmark.Memory(
-            { structure: "Tuple", action: "addNode" },
-            graph.addNode,
-            [],
-            details
-          );
-          expect(results.length).toEqual(1);
-        });
-      });
+    it("then node equals existingNodes[1]", () => {
+      expect(node).toEqual(existingNodes[1]);
     });
-    it("then graph.findNodeById exist", () => {
-      expect(graph.findNodeById).toBeDefined();
+  });
+  describe("when nodes = graph.findNodesByType(existingNodes, type)", () => {
+    let existingNodes;
+    let type;
+    let nodes;
+    beforeEach(() => {
+      existingNodes = graph.createNodes(2, {
+        name: "Node1",
+        type: "workflow",
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
+      });
+      existingNodes = graph.addNode(existingNodes, {
+        name: "Node2",
+        type: "decision",
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
+      });
+      type = "workflow";
+      nodes = graph.findNodesByType(existingNodes, type);
     });
-    describe("and nodes.length = 2", () => {
-      let nodes;
-      beforeEach(() => {
-        nodes = graph.addNode([], {
-          name: "Node1",
-          type: Utilities.getRandomElement<NodeType>(NodeTypes),
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        });
-        nodes = graph.addNode(nodes, {
-          name: "Node2",
-          type: Utilities.getRandomElement<NodeType>(NodeTypes),
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        });
-        nodes = structuredClone(nodes);
-      });
-      it("then nodes.length equals 2", () => {
-        expect(nodes.length).toBe(2);
-      });
-      describe("when graph.findNodeById(nodes, id)", () => {
-        let id;
-        beforeEach(() => {
-          id = nodes[1][0];
-        });
-        it("then graph.findNodeById(nodes, id) returns nodes[0]", () => {
-          expect(graph.findNodeById(nodes, id)).toEqual(nodes[1]);
-        });
-      });
+    it("then nodes exist", () => {
+      expect(nodes).toBeDefined();
     });
-    it("then graph.findNodesByType exist", () => {
-      expect(graph.findNodesByType).toBeDefined();
+    it("then nodes.length equals 4", () => {
+      expect(nodes.length).toBe(2);
     });
-    describe("and nodes has 4 nodes of which two of type workflow", () => {
-      let nodes;
-      beforeEach(() => {
-        nodes = graph.addNode([], {
-          name: "Node1",
-          type: "workflow",
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        });
-        nodes = graph.addNode(nodes, {
-          name: "Node2",
-          type: "workflow",
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        });
-        nodes = graph.addNode(nodes, {
-          name: "Node3",
-          type: "decision",
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        });
-        nodes = graph.addNode(nodes, {
-          name: "Node4",
-          type: "decision",
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        });
-        nodes = structuredClone(nodes);
+  });
+  describe("when nodes = graph.removeNodeById(existingNodes, id)", () => {
+    let existingNodes;
+    let id;
+    let nodes;
+    beforeEach(() => {
+      existingNodes = graph.createNodes(2, {
+        name: "Node1",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
       });
-      it("then nodes.length equals 4", () => {
-        expect(nodes.length).toBe(4);
-      });
-      describe("when graph.findNodesByType(nodes, type) where type equal workflow", () => {
-        let type;
-        let results;
-        beforeEach(() => {
-          type = "workflow";
-          results = graph.findNodesByType(nodes, type);
-        });
-        it("then results.length equals 2", () => {
-          expect(results.length).toBe(2);
-        });
-      });
+      id = existingNodes[1].id;
+      nodes = graph.removeNodeById(existingNodes, id);
     });
-    it("then graph.removeNodeById exist", () => {
-      expect(graph.removeNodeById).toBeDefined();
+    it("then nodes exist", () => {
+      expect(nodes).toBeDefined();
     });
-    describe("and nodes.length = 2", () => {
-      let nodes;
-      beforeEach(() => {
-        nodes = graph.addNode([], {
-          name: "Node1",
-          type: Utilities.getRandomElement<NodeType>(NodeTypes),
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        });
-        nodes = graph.addNode(nodes, {
-          name: "Node2",
-          type: Utilities.getRandomElement<NodeType>(NodeTypes),
-          coordinates: { x: 0, y: 0 },
-          icon: "./icon.svg",
-        });
-        nodes = structuredClone(nodes);
+    it("then nodes.length equals 1", () => {
+      expect(nodes.length).toBe(1);
+    });
+  });
+  describe("when benchmarking graph.createNodes function", () => {
+    let details;
+    beforeEach(() => {
+      details = {
+        name: "Node",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
+      };
+    });
+    it("then create 1 node takes", () => {
+      let qty = 1;
+      let nodes = Benchmark.Performance(
+        { structure: "Object", action: "createNodes", qty: qty },
+        graph.createNodes,
+        qty,
+        details
+      );
+      expect(nodes.length).toEqual(qty);
+    });
+    it("then create 1 node consumes", () => {
+      let qty = 1;
+      let nodes = Benchmark.Memory(
+        { structure: "Object", action: "createNodes", qty: qty },
+        graph.createNodes,
+        qty,
+        details
+      );
+      expect(nodes.length).toEqual(qty);
+    });
+    it("then create 10 node takes", () => {
+      let qty = 10;
+      let nodes = Benchmark.Performance(
+        { structure: "Object", action: "createNodes", qty: qty },
+        graph.createNodes,
+        qty,
+        details
+      );
+      expect(nodes.length).toEqual(qty);
+    });
+    it("then create 10 node consumes", () => {
+      let qty = 10;
+      let meta = { structure: "Object", action: "createNodes", qty: qty };
+      let nodes = Benchmark.Memory(meta, graph.createNodes, qty, details);
+      expect(nodes.length).toEqual(qty);
+    });
+    it("then create 100 node takes", () => {
+      let qty = 100;
+      let meta = { structure: "Object", action: "createNodes", qty: qty };
+      let nodes = Benchmark.Performance(meta, graph.createNodes, qty, details);
+      expect(nodes.length).toEqual(qty);
+    });
+    it("then create 100 node consumes", () => {
+      let qty = 100;
+      let meta = { structure: "Object", action: "createNodes", qty: qty };
+      let nodes = Benchmark.Memory(meta, graph.createNodes, qty, details);
+      expect(nodes.length).toEqual(qty);
+    });
+    it("then create 1000 node takes", () => {
+      let qty = 1000;
+      let meta = { structure: "Object", action: "createNodes", qty: qty };
+      let nodes = Benchmark.Performance(meta, graph.createNodes, qty, details);
+      expect(nodes.length).toEqual(qty);
+    });
+    it("then create 1000 node consumes", () => {
+      let qty = 1000;
+      let meta = { structure: "Object", action: "createNodes", qty: qty };
+      let nodes = Benchmark.Memory(meta, graph.createNodes, qty, details);
+      expect(nodes.length).toEqual(qty);
+    });
+    it("then create 10000 node takes", () => {
+      let qty = 10000;
+      let meta = { structure: "Object", action: "createNodes", qty: qty };
+      let nodes = Benchmark.Performance(meta, graph.createNodes, qty, details);
+      expect(nodes.length).toEqual(qty);
+    });
+    it("then create 10000 node consumes", () => {
+      let qty = 10000;
+      let meta = { structure: "Object", action: "createNodes", qty: qty };
+      let nodes = Benchmark.Memory(meta, graph.createNodes, qty, details);
+      expect(nodes.length).toEqual(qty);
+    });
+  });
+  describe("when benchmarking graph.addNode function", () => {
+    let details;
+    beforeEach(() => {
+      details = {
+        name: "Node",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
+      };
+    });
+    it("then adding 1 node to nodes takes", () => {
+      let meta = { structure: "Object", action: "addNode" };
+      let results = Benchmark.Performance(meta, graph.addNode, [], details);
+      expect(results.length).toEqual(1);
+    });
+    it("then adding 1 node to nodes consumes", () => {
+      let meta = { structure: "Object", action: "addNode" };
+      let results = Benchmark.Memory(meta, graph.addNode, [], details);
+      expect(results.length).toEqual(1);
+    });
+  });
+});
+
+import { Tuple } from "tuple";
+describe("Given graph = new Graph(Tuple)", () => {
+  let graph;
+  beforeEach(() => {
+    graph = new Graph(Tuple);
+  });
+  it("then graph exist", () => {
+    expect(graph).toBeDefined();
+  });
+  it("then graph.node exist", () => {
+    expect(graph.node).toBeDefined();
+  });
+  it("then graph.createNodes exist", () => {
+    expect(graph.createNodes).toBeDefined();
+  });
+  it("then graph.node equals Tuple", () => {
+    expect(graph.node).toBe(Tuple);
+  });
+  it("then graph.addNodes exist", () => {
+    expect(graph.addNodes).toBeDefined();
+  });
+  it("then graph.findNodeById exist", () => {
+    expect(graph.findNodeById).toBeDefined();
+  });
+  it("then graph.findNodesByType exist", () => {
+    expect(graph.findNodesByType).toBeDefined();
+  });
+  it("then graph.removeNodeById exist", () => {
+    expect(graph.removeNodeById).toBeDefined();
+  });
+  describe("when nodes = graph.createNodes(1, details)", () => {
+    let nodes;
+    beforeEach(() => {
+      let details = {
+        name: "Node",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
+      };
+      nodes = graph.createNodes(1, details);
+    });
+    it("then nodes exist", () => {
+      expect(nodes).toBeDefined();
+    });
+    it("then nodes.length equals 1", () => {
+      expect(nodes.length).toBe(1);
+    });
+  });
+  describe("when nodes = graph.addNode([], details)", () => {
+    let nodes;
+    beforeEach(() => {
+      let details = {
+        name: "Node1",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
+      };
+      nodes = graph.addNode([], details);
+    });
+    it("then nodes exist", () => {
+      expect(nodes).toBeDefined();
+    });
+    it("then nodes.length equals 1", () => {
+      expect(nodes.length).toBe(1);
+    });
+  });
+  describe("when nodes = graph.addNodes(existingNodes, newNodes)", () => {
+    let existingNodes;
+    let newNodes;
+    let nodes;
+    beforeEach(() => {
+      existingNodes = graph.createNodes(2, {
+        name: "Node1",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
       });
-      it("then nodes.length equals 2", () => {
-        expect(nodes.length).toBe(2);
+      newNodes = graph.createNodes(2, {
+        name: "Node2",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
       });
-      describe("when graph.removeNodeById(nodes, id)", () => {
-        let id;
-        let results;
-        beforeEach(() => {
-          id = nodes[1][0];
-        });
-        it("then results returned has length equals 1", () => {
-          results = graph.removeNodeById(nodes, id);
-          expect(results.length).toBe(1);
-        });
+      nodes = graph.addNodes(existingNodes, newNodes);
+    });
+    it("then nodes exist", () => {
+      expect(nodes).toBeDefined();
+    });
+    it("then nodes.length equals 4", () => {
+      expect(nodes.length).toBe(4);
+    });
+  });
+  describe("when node = graph.findNodeById(existingNodes, id)", () => {
+    let existingNodes;
+    let id;
+    let node;
+    beforeEach(() => {
+      existingNodes = graph.createNodes(2, {
+        name: "Node1",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
       });
+      id = existingNodes[1][0];
+      node = graph.findNodeById(existingNodes, id);
+    });
+    it("then node exist", () => {
+      expect(node).toBeDefined();
+    });
+    it("then node equals existingNodes[1]", () => {
+      expect(node).toEqual(existingNodes[1]);
+    });
+  });
+  describe("when nodes = graph.findNodesByType(existingNodes, type)", () => {
+    let existingNodes;
+    let type;
+    let nodes;
+    beforeEach(() => {
+      existingNodes = graph.createNodes(2, {
+        name: "Node1",
+        type: "workflow",
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
+      });
+      existingNodes = graph.addNode(existingNodes, {
+        name: "Node2",
+        type: "decision",
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
+      });
+      type = "workflow";
+      nodes = graph.findNodesByType(existingNodes, type);
+    });
+    it("then nodes exist", () => {
+      expect(nodes).toBeDefined();
+    });
+    it("then nodes.length equals 4", () => {
+      expect(nodes.length).toBe(2);
+    });
+  });
+  describe("when nodes = graph.removeNodeById(existingNodes, id)", () => {
+    let existingNodes;
+    let id;
+    let nodes;
+    beforeEach(() => {
+      existingNodes = graph.createNodes(2, {
+        name: "Node1",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
+      });
+      id = existingNodes[1][0];
+      nodes = graph.removeNodeById(existingNodes, id);
+    });
+    it("then nodes exist", () => {
+      expect(nodes).toBeDefined();
+    });
+    it("then nodes.length equals 1", () => {
+      expect(nodes.length).toBe(1);
+    });
+  });
+  describe("when benchmarking graph.createNodes function", () => {
+    let details;
+    beforeEach(() => {
+      details = {
+        name: "Node",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
+      };
+    });
+    it("then create 1 node takes", () => {
+      let qty = 1;
+      let nodes = Benchmark.Performance(
+        { structure: "Object", action: "createNodes", qty: qty },
+        graph.createNodes,
+        qty,
+        details
+      );
+      expect(nodes.length).toEqual(qty);
+    });
+    it("then create 1 node consumes", () => {
+      let qty = 1;
+      let nodes = Benchmark.Memory(
+        { structure: "Object", action: "createNodes", qty: qty },
+        graph.createNodes,
+        qty,
+        details
+      );
+      expect(nodes.length).toEqual(qty);
+    });
+    it("then create 10 node takes", () => {
+      let qty = 10;
+      let nodes = Benchmark.Performance(
+        { structure: "Object", action: "createNodes", qty: qty },
+        graph.createNodes,
+        qty,
+        details
+      );
+      expect(nodes.length).toEqual(qty);
+    });
+    it("then create 10 node consumes", () => {
+      let qty = 10;
+      let meta = { structure: "Object", action: "createNodes", qty: qty };
+      let nodes = Benchmark.Memory(meta, graph.createNodes, qty, details);
+      expect(nodes.length).toEqual(qty);
+    });
+    it("then create 100 node takes", () => {
+      let qty = 100;
+      let meta = { structure: "Object", action: "createNodes", qty: qty };
+      let nodes = Benchmark.Performance(meta, graph.createNodes, qty, details);
+      expect(nodes.length).toEqual(qty);
+    });
+    it("then create 100 node consumes", () => {
+      let qty = 100;
+      let meta = { structure: "Object", action: "createNodes", qty: qty };
+      let nodes = Benchmark.Memory(meta, graph.createNodes, qty, details);
+      expect(nodes.length).toEqual(qty);
+    });
+    it("then create 1000 node takes", () => {
+      let qty = 1000;
+      let meta = { structure: "Object", action: "createNodes", qty: qty };
+      let nodes = Benchmark.Performance(meta, graph.createNodes, qty, details);
+      expect(nodes.length).toEqual(qty);
+    });
+    it("then create 1000 node consumes", () => {
+      let qty = 1000;
+      let meta = { structure: "Object", action: "createNodes", qty: qty };
+      let nodes = Benchmark.Memory(meta, graph.createNodes, qty, details);
+      expect(nodes.length).toEqual(qty);
+    });
+    it("then create 10000 node takes", () => {
+      let qty = 10000;
+      let meta = { structure: "Object", action: "createNodes", qty: qty };
+      let nodes = Benchmark.Performance(meta, graph.createNodes, qty, details);
+      expect(nodes.length).toEqual(qty);
+    });
+    it("then create 10000 node consumes", () => {
+      let qty = 10000;
+      let meta = { structure: "Object", action: "createNodes", qty: qty };
+      let nodes = Benchmark.Memory(meta, graph.createNodes, qty, details);
+      expect(nodes.length).toEqual(qty);
+    });
+  });
+  describe("when benchmarking graph.addNode function", () => {
+    let details;
+    beforeEach(() => {
+      details = {
+        name: "Node",
+        type: Utilities.getRandomElement<NodeType>(NodeTypes),
+        coordinates: { x: 0, y: 0 },
+        icon: "./icon.svg",
+      };
+    });
+    it("then adding 1 node to nodes takes", () => {
+      let meta = { structure: "Object", action: "addNode" };
+      let results = Benchmark.Performance(meta, graph.addNode, [], details);
+      expect(results.length).toEqual(1);
+    });
+    it("then adding 1 node to nodes consumes", () => {
+      let meta = { structure: "Object", action: "addNode" };
+      let results = Benchmark.Memory(meta, graph.addNode, [], details);
+      expect(results.length).toEqual(1);
     });
   });
 });

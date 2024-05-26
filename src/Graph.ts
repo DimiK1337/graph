@@ -29,8 +29,8 @@ export class Graph {
 
   findNodesByType = (nodes: Node[], type: string) =>
     this.node.structure === "object"
-      ? nodes.filter((node: ObjectNode) => node.type !== type)
-      : nodes.filter((node: TupleNode) => node[2] !== type);
+      ? nodes.filter((node: ObjectNode) => node.type === type)
+      : nodes.filter((node: TupleNode) => node[2] === type);
 
   removeNodeById = (nodes: Node[], id: string) =>
     this.node.structure === "object"
