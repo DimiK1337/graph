@@ -18,11 +18,7 @@ export class Graph {
   createNodes = (qty: number, details) =>
     Array.from({ length: qty }, () => this.node.create(details));
 
-  addNode = (nodes: Node[], { name, type, coordinates, icon }) => {
-    const node = this.node.create({ name, type, coordinates, icon });
-    nodes.push(node);
-    return nodes;
-  };
+  addNode = (nodes: Node[], details) => [...nodes, this.node.create(details)];
 
   findNodeById = (nodes: Node[], id: string) =>
     this.node.structure === "object"
